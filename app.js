@@ -150,6 +150,11 @@ function setupRecipePicker() {
         <label class="recipe-option"><input type="checkbox" name="recipe-filter" value="quick"><span class="recipe-check" aria-hidden="true">✓</span><span>Rápido de cocinar <small>25 min o menos</small></span></label>
         <label class="recipe-option"><input type="checkbox" name="recipe-filter" value="few-ingredients"><span class="recipe-check" aria-hidden="true">✓</span><span>Pocos ingredientes <small>6 o menos</small></span></label>
       </fieldset>
+      <fieldset class="recipe-mode-options">
+        <legend>¿Cómo quieres ver los resultados?</legend>
+        <label class="recipe-mode-option"><input type="radio" name="recipe-mode" value="list" checked><span>Ver listado</span></label>
+        <label class="recipe-mode-option"><input type="radio" name="recipe-mode" value="random"><span>Elegir una al azar</span></label>
+      </fieldset>
       <div class="recipe-actions"><button class="button button-primary" type="submit">Buscar recetas <span aria-hidden="true">→</span></button><button id="clear-recipe-filters" class="recipe-clear" type="button">Quitar filtros</button></div>
       <p id="recipe-message" class="recipe-message" aria-live="polite"></p>
     </form>
@@ -166,6 +171,7 @@ function setupRecipePicker() {
   form.addEventListener("submit", (event) => {
     event.preventDefault();
     const selected = [...form.querySelectorAll('input[name="recipe-filter"]:checked')].map((input) => input.value);
+    const mode = form.querySelector('input[name="recipe-mode"]:checked').value;
     results.replaceChildren();
 
     if (!selected.length) {
@@ -186,20 +192,15 @@ function setupRecipePicker() {
       return;
     }
 
+    if (mode === "random") {
+      const chosenRecipe = matches[Math.floor(Math.random() * matches.length)];
+      message.textContent = "Tu receta elegida al azar:";
+      renderRecipe(chosenRecipe, results);
+      return;
+    }
+
     message.textContent = `${matches.length} ${matches.length === 1 ? "receta encontrada" : "recetas encontradas"} para ti`;
-    matches.forEach((recipe) => {
-      const card = document.createElement("article");
-      card.className = "recipe-card";
-      const title = document.createElement("h3");
-      title.textContent = recipe.name;
-      const description = document.createElement("p");
-      description.textContent = recipe.description;
-      const details = document.createElement("div");
-      details.className = "recipe-details";
-      details.textContent = `◷ ${recipe.minutes} min  ·  ♧ ${recipe.ingredients} ingredientes${recipe.tupper ? "  ·  ✓ Apta para tupper" : ""}`;
-      card.append(title, description, details);
-      results.append(card);
-    });
+    matches.forEach((recipe) => renderRecipe(recipe, results));
   });
 
   section.querySelector("#clear-recipe-filters").addEventListener("click", () => {
@@ -207,6 +208,20 @@ function setupRecipePicker() {
     results.replaceChildren();
     message.textContent = "";
   });
+}
+
+function renderRecipe(recipe, container) {
+  const card = document.createElement("article");
+  card.className = "recipe-card";
+  const title = document.createElement("h3");
+  title.textContent = recipe.name;
+  const description = document.createElement("p");
+  description.textContent = recipe.description;
+  const details = document.createElement("div");
+  details.className = "recipe-details";
+  details.textContent = `◷ ${recipe.minutes} min  ·  ♧ ${recipe.ingredients} ingredientes${recipe.tupper ? "  ·  ✓ Apta para tupper" : ""}`;
+  card.append(title, description, details);
+  container.append(card);
 }
 
 setupRecipePicker();
