@@ -133,6 +133,10 @@ recipeStyles.rel = "stylesheet";
 recipeStyles.href = "recipe.css";
 document.head.append(recipeStyles);
 
+function normalizeText(value) {
+  return value.normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLocaleLowerCase("es").trim();
+}
+
 function setupRecipePicker() {
   const section = document.createElement("section");
   section.className = "recipe-picker panel";
@@ -142,12 +146,32 @@ function setupRecipePicker() {
       <div><p class="eyebrow">¿QUÉ COCINAMOS HOY?</p><h2 id="recipe-title">Encuentra tu receta</h2></div>
       <span class="recipe-icon" aria-hidden="true">♨</span>
     </div>
-    <p class="recipe-intro">Elige todas las opciones que te interesen y buscaremos recetas que cumplan con ellas.</p>
+    <p class="recipe-intro">Busca por nombre y combina las opciones que te interesen.</p>
     <form id="recipe-form">
+      <div class="recipe-filter-grid">
+        <label class="recipe-field recipe-search-field" for="recipe-search">Nombre de la receta
+          <input id="recipe-search" type="search" placeholder="Ej. tortilla, pasta…" autocomplete="off">
+        </label>
+        <label class="recipe-field" for="recipe-time">Tiempo de cocinado
+          <select id="recipe-time" name="recipe-time">
+            <option value="">Cualquier duración</option>
+            <option value="under30">Menos de 30 mins</option>
+            <option value="30to60">Entre 30 y 60 minutos</option>
+            <option value="over60">Más de una hora</option>
+          </select>
+        </label>
+        <label class="recipe-field" for="recipe-category">Tipo de receta
+          <select id="recipe-category" name="recipe-category">
+            <option value="">Todos los tipos</option>
+            <option value="salado">Salado</option>
+            <option value="guarnicion">Guarnición</option>
+            <option value="postre">Postre</option>
+          </select>
+        </label>
+      </div>
       <fieldset class="recipe-options">
-        <legend class="sr-only">Características de la receta</legend>
+        <legend>Otras características</legend>
         <label class="recipe-option"><input type="checkbox" name="recipe-filter" value="tupper"><span class="recipe-check" aria-hidden="true">✓</span><span>Perfecto para tupper</span></label>
-        <label class="recipe-option"><input type="checkbox" name="recipe-filter" value="quick"><span class="recipe-check" aria-hidden="true">✓</span><span>Rápido de cocinar <small>25 min o menos</small></span></label>
         <label class="recipe-option"><input type="checkbox" name="recipe-filter" value="few-ingredients"><span class="recipe-check" aria-hidden="true">✓</span><span>Pocos ingredientes <small>6 o menos</small></span></label>
       </fieldset>
       <fieldset class="recipe-mode-options">
@@ -159,6 +183,10 @@ function setupRecipePicker() {
       <p id="recipe-message" class="recipe-message" aria-live="polite"></p>
     </form>
     <div id="recipe-results" class="recipe-results" aria-live="polite"></div>
+    <dialog id="recipe-dialog" class="recipe-dialog" aria-labelledby="recipe-dialog-title">
+      <div class="recipe-dialog-header"><p class="eyebrow">PARA PONERSE EL DELANTAL</p><button class="recipe-dialog-close" type="button" aria-label="Cerrar detalles">×</button></div>
+      <div id="recipe-dialog-content"></div>
+    </dialog>
   `;
 
   const dashboard = document.querySelector("#inicio");
@@ -167,40 +195,43 @@ function setupRecipePicker() {
   const form = section.querySelector("#recipe-form");
   const results = section.querySelector("#recipe-results");
   const message = section.querySelector("#recipe-message");
+  const dialog = section.querySelector("#recipe-dialog");
+  const dialogContent = section.querySelector("#recipe-dialog-content");
 
   form.addEventListener("submit", (event) => {
     event.preventDefault();
     const selected = [...form.querySelectorAll('input[name="recipe-filter"]:checked')].map((input) => input.value);
+    const nameQuery = normalizeText(section.querySelector("#recipe-search").value);
+    const timeRange = section.querySelector("#recipe-time").value;
+    const category = section.querySelector("#recipe-category").value;
     const mode = form.querySelector('input[name="recipe-mode"]:checked').value;
     results.replaceChildren();
 
-    if (!selected.length) {
-      message.textContent = "Marca al menos una opción para encontrar tu receta.";
-      form.querySelector('input[name="recipe-filter"]').focus();
-      return;
-    }
-
-    const matches = recipes.filter((recipe) => selected.every((filter) => {
-      if (filter === "tupper") return recipe.tupper;
-      if (filter === "quick") return recipe.minutes <= 25;
-      if (filter === "few-ingredients") return recipe.ingredients <= 6;
-      return false;
-    }));
+    const matches = recipes.filter((recipe) => {
+      if (nameQuery && !normalizeText(recipe.name).includes(nameQuery)) return false;
+      if (category && recipe.category !== category) return false;
+      if (selected.includes("tupper") && !recipe.tupper) return false;
+      if (selected.includes("few-ingredients") && recipe.ingredients.length > 6) return false;
+      if (timeRange === "under30" && recipe.minutes >= 30) return false;
+      if (timeRange === "30to60" && (recipe.minutes < 30 || recipe.minutes > 60)) return false;
+      if (timeRange === "over60" && recipe.minutes <= 60) return false;
+      return true;
+    });
 
     if (!matches.length) {
-      message.textContent = "No hay recetas que cumplan todas esas opciones. Prueba a quitar algún filtro.";
+      message.textContent = "No hay recetas que coincidan. Prueba a cambiar o quitar algún criterio.";
       return;
     }
 
     if (mode === "random") {
       const chosenRecipe = matches[Math.floor(Math.random() * matches.length)];
       message.textContent = "Tu receta elegida al azar:";
-      renderRecipe(chosenRecipe, results);
+      renderRecipe(chosenRecipe, results, openRecipeDetails);
       return;
     }
 
-    message.textContent = `${matches.length} ${matches.length === 1 ? "receta encontrada" : "recetas encontradas"} para ti`;
-    matches.forEach((recipe) => renderRecipe(recipe, results));
+    message.textContent = `${matches.length} ${matches.length === 1 ? "receta encontrada" : "recetas encontradas"}. Pulsa una para ver sus detalles.`;
+    matches.forEach((recipe) => renderRecipe(recipe, results, openRecipeDetails));
   });
 
   section.querySelector("#clear-recipe-filters").addEventListener("click", () => {
@@ -208,19 +239,64 @@ function setupRecipePicker() {
     results.replaceChildren();
     message.textContent = "";
   });
+
+  function openRecipeDetails(recipe) {
+    dialogContent.replaceChildren();
+    const title = document.createElement("h2");
+    title.id = "recipe-dialog-title";
+    title.textContent = recipe.name;
+    const description = document.createElement("p");
+    description.className = "recipe-dialog-description";
+    description.textContent = recipe.description;
+    const facts = document.createElement("p");
+    facts.className = "recipe-dialog-facts";
+    facts.textContent = `${recipe.minutes} min · ${recipe.servings} raciones · ${categoryLabel(recipe.category)}${recipe.tupper ? " · Apta para tupper" : ""}`;
+    const ingredientsHeading = document.createElement("h3");
+    ingredientsHeading.textContent = "Ingredientes";
+    const ingredients = document.createElement("ul");
+    ingredients.className = "recipe-ingredient-list";
+    recipe.ingredients.forEach((ingredient) => {
+      const item = document.createElement("li");
+      item.textContent = ingredient;
+      ingredients.append(item);
+    });
+    const instructionsHeading = document.createElement("h3");
+    instructionsHeading.textContent = "Preparación";
+    const instructions = document.createElement("p");
+    instructions.className = "recipe-instructions";
+    instructions.textContent = recipe.instructions;
+    dialogContent.append(title, description, facts, ingredientsHeading, ingredients, instructionsHeading, instructions);
+    dialog.showModal();
+    section.querySelector(".recipe-dialog-close").focus();
+  }
+
+  section.querySelector(".recipe-dialog-close").addEventListener("click", () => dialog.close());
+  dialog.addEventListener("click", (event) => {
+    if (event.target === dialog) dialog.close();
+  });
 }
 
-function renderRecipe(recipe, container) {
-  const card = document.createElement("article");
+function categoryLabel(category) {
+  return ({ salado: "Salado", guarnicion: "Guarnición", postre: "Postre" })[category] || "Receta";
+}
+
+function renderRecipe(recipe, container, onSelect) {
+  const card = document.createElement("button");
   card.className = "recipe-card";
+  card.type = "button";
+  card.setAttribute("aria-label", `Ver receta: ${recipe.name}`);
   const title = document.createElement("h3");
   title.textContent = recipe.name;
   const description = document.createElement("p");
   description.textContent = recipe.description;
   const details = document.createElement("div");
   details.className = "recipe-details";
-  details.textContent = `◷ ${recipe.minutes} min  ·  ♧ ${recipe.ingredients} ingredientes${recipe.tupper ? "  ·  ✓ Apta para tupper" : ""}`;
-  card.append(title, description, details);
+  details.textContent = `${recipe.minutes} min · ${recipe.ingredients.length} ingredientes · ${categoryLabel(recipe.category)}${recipe.tupper ? " · Apta para tupper" : ""}`;
+  const prompt = document.createElement("span");
+  prompt.className = "recipe-card-prompt";
+  prompt.textContent = "Ver ingredientes y preparación →";
+  card.append(title, description, details, prompt);
+  card.addEventListener("click", () => onSelect(recipe));
   container.append(card);
 }
 
