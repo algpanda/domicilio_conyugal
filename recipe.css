@@ -1,0 +1,29 @@
+/* Selector de recetas */
+.recipe-picker { margin: 0 0 17px; }
+.recipe-heading { min-height: 53px; }
+.recipe-icon { color: #c89b66; font-size: 30px; }
+.recipe-intro { margin: 2px 0 17px; color: var(--muted); font-size: 12px; line-height: 1.6; }
+.recipe-options { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 10px; margin: 0; padding: 0; border: 0; }
+.recipe-option { display: flex; min-height: 62px; padding: 11px 13px; align-items: center; gap: 10px; color: #505c51; border: 1px solid #e8e7df; border-radius: 11px; background: #fcfbf8; cursor: pointer; font-size: 12px; transition: border-color .15s, background .15s; }
+.recipe-option:has(input:checked) { border-color: #8da18a; background: #f0f3eb; }
+.recipe-option input { position: absolute; width: 1px; height: 1px; opacity: 0; }
+.recipe-option input:focus-visible + .recipe-check { outline: 3px solid #7d9a7e66; outline-offset: 3px; }
+.recipe-check { display: grid; width: 19px; height: 19px; flex: 0 0 19px; place-items: center; color: transparent; border: 1px solid #d5d9cd; border-radius: 6px; background: white; font-size: 12px; }
+.recipe-option input:checked + .recipe-check { color: white; border-color: var(--green); background: var(--green); }
+.recipe-option small { display: block; margin-top: 3px; color: #90968b; font-size: 10px; }
+.recipe-actions { display: flex; margin-top: 14px; align-items: center; gap: 15px; }
+.recipe-actions .button { min-height: 41px; }
+.recipe-clear { padding: 8px 0; color: #697768; border: 0; background: transparent; font-size: 12px; }
+.recipe-clear:hover { color: var(--ink); text-decoration: underline; }
+.recipe-message { min-height: 0; margin: 10px 0 0; color: #8b6951; font-size: 12px; }
+.recipe-message:empty { display: none; }
+.recipe-results { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; margin-top: 13px; }
+.recipe-card { padding: 14px; border: 1px solid #eeece4; border-radius: 11px; background: #fcfbf8; }
+.recipe-card h3 { margin: 0 0 5px; color: var(--ink); font-size: 14px; }
+.recipe-card p { margin: 0 0 11px; color: var(--muted); font-size: 11px; line-height: 1.5; }
+.recipe-details { color: #788273; font-size: 10px; line-height: 1.5; }
+@media (max-width: 700px) {
+  .recipe-options { grid-template-columns: 1fr; gap: 7px; }
+  .recipe-option { min-height: 53px; }
+  .recipe-results { grid-template-columns: 1fr; }
+}
