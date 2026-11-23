@@ -149,5 +149,29 @@ window.RECETAS = [
     tupper: false,
     ingredients: ["1 yogur natural", "3 huevos", "2 medidas de azúcar", "3 medidas de harina", "1 medida de aceite", "1 sobre de levadura"],
     instructions: "Bate el yogur con los huevos y el azúcar. Incorpora harina, aceite y levadura. Vierte en un molde y hornea a 180 °C durante unos 45–50 minutos."
-  }
+  },
+  {
+  name: "Alitas de pollo glaseadas con gochujang",
+  description: "Alitas al horno bien salsosas, con glaseado de gochujang, miel y soja, y crema agria con limón.",
+  minutes: 45,
+  category: "principal",
+  servings: 4,
+  tupper: false,
+  ingredients: [
+    "Alitas de pollo (aprox. 1 kg)",
+    "Sal y pimienta",
+    "1 cucharada de gochujang",
+    "2 cucharadas de miel",
+    "2 cucharadas de salsa de soja",
+    "2 cucharadas de salsa de azúcar moreno",
+    "1 diente de ajo rallado",
+    "25 g de mantequilla",
+    "1 cucharada de aceite de sésamo",
+    "Crème fraîche",
+    "Zumo de limón (o yuzu o lima)",
+    "Cebolla crujiente",
+    "Cebollino o cebolleta"
+  ],
+  instructions: "Mezcla en una sartén a fuego medio el gochujang, la miel, la soja, la salsa de azúcar moreno y el ajo rallado hasta que se integren. Limpia las alitas y sazónalas con sal y pimienta. Hornéalas con ventilador a 200 °C durante 25-30 minutos. Cuando falten 5 minutos, píntalas con el glaseado con un pincel y vuelve a meterlas para que caramelicen. Al sacarlas, pásalas a la sartén con el glaseado sobrante, añade la mantequilla y el aceite de sésamo y embadúrnalas bien. Prepara una crema agria rápida mezclando crème fraîche con un poco de zumo de limón. Emplata con bastante salsa, unos hilos de crema agria, cebolla crujiente y cebollino o cebolleta."
+}
 ];
