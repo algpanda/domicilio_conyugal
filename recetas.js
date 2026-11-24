@@ -10,7 +10,7 @@ window.RECETAS = [
   servings: 4,
   etiquetas: ["Tupper","Comida en casa"],
   materiasPrimas: ["Verduras"],
-  imageUrl: "https://raw.githubusercontent.com/algpanda/domicilio-conyugal-images/refs/heads/main/pumpkin_curry.jpg",
+  imageUrl: "https://raw.githubusercontent.com/algpanda/domicilio-conyugal-images/main/20250509_141433.jpg",
   ingredients: [
     "Calabaza",
     "1 cebolla",
