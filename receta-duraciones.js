@@ -1,0 +1,23 @@
+window.RECIPE_DURATIONS = {
+  "Pumpkin curry": "entre 30 - 60 minutos",
+  "Cachapa de Reina pipiada": "entre 30 - 60 minutos",
+  "Chocolate, pan, aceite y sal 🍫🥖🧂": "entre 30 - 60 minutos",
+  "Ensalada de garbanzos": ">1 hora",
+  "Pasta con tomate y atún": "<30 minutos",
+  "Tortilla de calabacín": "<30 minutos",
+  "Arroz salteado con verduras": "<30 minutos",
+  "Quesadillas de queso y frijoles": "<30 minutos",
+  "Crema rápida de calabaza": "<30 minutos",
+  "Tostadas de aguacate y huevo": "<30 minutos",
+  "Pollo al limón con cuscús": "<30 minutos",
+  "Bowl de quinoa y verduras": "entre 30 - 60 minutos",
+  "Lentejas exprés": "<30 minutos",
+  "Patatas al romero": "entre 30 - 60 minutos",
+  "Arroz blanco": "<30 minutos",
+  "Ensalada de frutas": "<30 minutos",
+  "Tortitas de plátano": "<30 minutos",
+  "Bizcocho de yogur": ">1 hora",
+  "Alitas de pollo glaseadas con gochujang": "entre 30 - 60 minutos",
+  "Curry de garbanzos": "entre 30 - 60 minutos",
+  "Kimchi casero": ">1 día"
+};
