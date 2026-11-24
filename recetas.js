@@ -2,6 +2,39 @@
 // Cada receta puede definir: tips (array), fuente (texto o URL) y fecha (texto).
 window.RECETAS = [
   {
+  name: "Pumpkin curry",
+  description: "Pendiente.",
+  tipo: "Salado",
+  region: "India",
+  tiempoMinutos: 60,
+  servings: 4,
+  etiquetas: ["Tupper","Comida en casa"],
+  materiasPrimas: ["Verduras"],
+  imageUrl: "Pendiente de indicar",
+  ingredients: [
+    "Calabaza",
+    "1 cebolla",
+    "Ajo",
+    "Tomate concentrado",
+    "Tomate triturado",
+    "1 manzana reineta",
+    "Leche de coco (o nata en su defecto)",
+    "Curry, comino, cúrcuma y canela",
+    "Curry leaves"
+  ],
+  instructions: [
+    "Sofreír la cebolla y ajo, echar el tomate concentrado, tomate triturado y las especias.",
+    "Echar la calabaza y cubrir con agua. Cocinar a medio fuego unos 20 minutos.",
+    "Al finalizar, añade la manzana rallada y la leche de coco (o nata) y cocina 3 minutos más."
+  ],
+  tips: [
+    "Deja la tapa entreabierta para que la calabaza no se pase demasiado y la salsa espese.",
+    "Corta a la mitad los trozos de calabaza que sean muy grandes."
+  ],
+  fuente: "Sigiriya, Sri Lanka",
+  fecha: "11/05/2025"
+}
+  ,{
     name: "Ensalada de garbanzos",
     description: "Fresca, saciante y lista en un momento.",
     tipo: "Ensalada",
