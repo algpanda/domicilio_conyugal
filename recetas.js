@@ -6,7 +6,7 @@ window.RECETAS = [
   description: "Pendiente.",
   tipo: "Salado",
   region: "India",
-  tiempoMinutos: 60,
+  tiempoMinutos: 120,
   servings: 4,
   etiquetas: ["Tupper","Amigos en casa"],
   materiasPrimas: ["Verduras"],
