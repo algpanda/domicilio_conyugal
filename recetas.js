@@ -10,7 +10,7 @@ window.RECETAS = [
     servings: 2,
     etiquetas: ["Tupper"],
     materiasPrimas: ["Verduras"],
-    imageUrl: "",
+    imageUrl: "https://github.com/algpanda/domicilio-conyugal-images/blob/main/ensalada_garbanzos.jfif",
     ingredients: ["400 g de garbanzos cocidos", "1 tomate", "1/2 pepino", "1/4 de cebolla roja", "Aceite de oliva, vinagre y sal"],
     instructions: ["Lava y escurre los garbanzos.", "Trocea las verduras.", "Mézclalas con los garbanzos y aliña al gusto."],
     tips: ["Enfría la ensalada antes de servir.", "Añade el aliño justo antes de comer si la guardas en tupper."],
