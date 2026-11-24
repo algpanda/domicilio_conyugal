@@ -1,3 +1,5 @@
+// Mantiene el catálogo por separado y añade datos editoriales opcionales.
+// Cada receta puede definir: tips (array), fuente (texto o URL) y fecha (texto).
 window.RECETAS = [
   {
     name: "Ensalada de garbanzos",
@@ -8,9 +10,12 @@ window.RECETAS = [
     servings: 2,
     etiquetas: ["Tupper"],
     materiasPrimas: ["Verduras"],
-    imageUrl: "https://raw.githubusercontent.com/algpanda/domicilio-conyugal-images/main/ensalada_garbanzos.jfif",
+    imageUrl: "",
     ingredients: ["400 g de garbanzos cocidos", "1 tomate", "1/2 pepino", "1/4 de cebolla roja", "Aceite de oliva, vinagre y sal"],
-    instructions: ["Lava y escurre los garbanzos.","Trocea las verduras. Mézclalas con los garbanzos y aliña al gusto."]
+    instructions: ["Lava y escurre los garbanzos.", "Trocea las verduras.", "Mézclalas con los garbanzos y aliña al gusto."],
+    tips: ["Enfría la ensalada antes de servir.", "Añade el aliño justo antes de comer si la guardas en tupper."],
+    fuente: "Pendiente de indicar",
+    fecha: "Pendiente de indicar"
   },
   {
     name: "Pasta con tomate y atún",
@@ -21,8 +26,12 @@ window.RECETAS = [
     servings: 2,
     etiquetas: ["Tupper"],
     materiasPrimas: ["Pescado", "Pasta"],
+    imageUrl: "",
     ingredients: ["180 g de pasta", "1 lata de atún", "200 g de tomate triturado", "1/2 cebolla", "Aceite de oliva y orégano"],
-    instructions: "Cuece la pasta. Sofríe la cebolla y añade el tomate y el atún. Cocina unos minutos. Mezcla con la pasta y sirve."
+    instructions: ["Cuece la pasta.", "Sofríe la cebolla y añade el tomate y el atún.", "Cocina unos minutos y mezcla con la pasta."],
+    tips: ["Reserva un poco del agua de cocción para ligar la salsa."],
+    fuente: "Pendiente de indicar",
+    fecha: "Pendiente de indicar"
   },
   {
     name: "Tortilla de calabacín",
@@ -33,8 +42,12 @@ window.RECETAS = [
     servings: 2,
     etiquetas: ["Tupper"],
     materiasPrimas: ["Verduras"],
+    imageUrl: "",
     ingredients: ["1 calabacín", "4 huevos", "1/2 cebolla", "Aceite de oliva y sal"],
-    instructions: "Corta y cocina el calabacín y la cebolla en una sartén. Mézclalos con los huevos batidos. Cuaja la tortilla por ambos lados."
+    instructions: ["Corta y cocina el calabacín y la cebolla.", "Mézclalos con los huevos batidos.", "Cuaja la tortilla por ambos lados."],
+    tips: ["Cocina el calabacín a fuego medio para que pierda parte del agua."],
+    fuente: "Pendiente de indicar",
+    fecha: "Pendiente de indicar"
   },
   {
     name: "Arroz salteado con verduras",
@@ -45,8 +58,12 @@ window.RECETAS = [
     servings: 2,
     etiquetas: ["Tupper"],
     materiasPrimas: ["Verduras", "Arroz"],
+    imageUrl: "",
     ingredients: ["160 g de arroz", "1 zanahoria", "1/2 pimiento", "100 g de guisantes", "2 cucharadas de salsa de soja", "Aceite de oliva"],
-    instructions: "Cuece el arroz y déjalo escurrir. Saltea las verduras troceadas. Añade el arroz y la salsa de soja, y cocina todo junto unos minutos."
+    instructions: ["Cuece el arroz y escúrrelo.", "Saltea las verduras troceadas.", "Añade el arroz y la salsa de soja y cocina todo junto unos minutos."],
+    tips: ["Si usas arroz cocinado del día anterior, quedará más suelto."],
+    fuente: "Pendiente de indicar",
+    fecha: "Pendiente de indicar"
   },
   {
     name: "Quesadillas de queso y frijoles",
@@ -57,8 +74,12 @@ window.RECETAS = [
     servings: 2,
     etiquetas: ["Amigos en casa"],
     materiasPrimas: ["Verduras"],
+    imageUrl: "",
     ingredients: ["4 tortillas de trigo", "150 g de frijoles cocidos", "120 g de queso rallado", "1/2 aguacate", "Zumo de lima"],
-    instructions: "Rellena las tortillas con frijoles y queso. Dóralas en una sartén por ambos lados. Córtalas y acompaña con aguacate y lima."
+    instructions: ["Rellena las tortillas con frijoles y queso.", "Dóralas en una sartén por ambos lados.", "Córtalas y acompaña con aguacate y lima."],
+    tips: ["No llenes demasiado las tortillas para darles la vuelta fácilmente."],
+    fuente: "Pendiente de indicar",
+    fecha: "Pendiente de indicar"
   },
   {
     name: "Crema rápida de calabaza",
@@ -69,8 +90,12 @@ window.RECETAS = [
     servings: 3,
     etiquetas: ["Tupper"],
     materiasPrimas: ["Verduras", "Patatas"],
+    imageUrl: "",
     ingredients: ["600 g de calabaza", "1 patata", "1/2 cebolla", "700 ml de caldo de verduras", "Aceite de oliva y sal"],
-    instructions: "Trocea las verduras. Cuécelas en el caldo hasta que estén tiernas. Tritura hasta obtener una crema fina y ajusta de sal."
+    instructions: ["Trocea las verduras.", "Cuécelas en el caldo hasta que estén tiernas.", "Tritura hasta obtener una crema fina y ajusta de sal."],
+    tips: ["Añade el caldo poco a poco hasta conseguir la textura deseada."],
+    fuente: "Pendiente de indicar",
+    fecha: "Pendiente de indicar"
   },
   {
     name: "Tostadas de aguacate y huevo",
@@ -81,8 +106,12 @@ window.RECETAS = [
     servings: 2,
     etiquetas: [],
     materiasPrimas: ["Verduras"],
+    imageUrl: "",
     ingredients: ["2 rebanadas de pan", "1 aguacate", "2 huevos", "Sal y pimienta"],
-    instructions: "Tuesta el pan y aplasta el aguacate sobre las rebanadas. Cocina los huevos a tu gusto. Colócalos encima y salpimienta."
+    instructions: ["Tuesta el pan.", "Aplasta el aguacate sobre las rebanadas.", "Cocina los huevos y colócalos encima."],
+    tips: ["Unas gotas de limón ayudan a conservar el color del aguacate."],
+    fuente: "Pendiente de indicar",
+    fecha: "Pendiente de indicar"
   },
   {
     name: "Pollo al limón con cuscús",
@@ -93,8 +122,12 @@ window.RECETAS = [
     servings: 2,
     etiquetas: ["Tupper"],
     materiasPrimas: ["Carne"],
+    imageUrl: "",
     ingredients: ["250 g de pechuga de pollo", "150 g de cuscús", "1 limón", "1 diente de ajo", "200 ml de caldo", "Aceite de oliva y sal"],
-    instructions: "Hidrata el cuscús con caldo caliente. Dora el pollo en dados con ajo. Añade zumo de limón y sirve sobre el cuscús."
+    instructions: ["Hidrata el cuscús con caldo caliente.", "Dora el pollo en dados con ajo.", "Añade zumo de limón y sirve sobre el cuscús."],
+    tips: ["Deja reposar el pollo unos minutos antes de servir."],
+    fuente: "Pendiente de indicar",
+    fecha: "Pendiente de indicar"
   },
   {
     name: "Bowl de quinoa y verduras",
@@ -105,8 +138,12 @@ window.RECETAS = [
     servings: 2,
     etiquetas: ["Tupper"],
     materiasPrimas: ["Verduras"],
+    imageUrl: "",
     ingredients: ["150 g de quinoa", "1 boniato pequeño", "1/2 aguacate", "100 g de espinacas", "1/2 limón", "Aceite de oliva y sal"],
-    instructions: "Cuece la quinoa y asa el boniato en dados. Coloca ambos en un bol con espinacas y aguacate. Aliña con limón y aceite."
+    instructions: ["Cuece la quinoa y asa el boniato en dados.", "Coloca ambos en un bol con espinacas y aguacate.", "Aliña con limón y aceite."],
+    tips: ["Enjuaga la quinoa antes de cocerla para suavizar su sabor."],
+    fuente: "Pendiente de indicar",
+    fecha: "Pendiente de indicar"
   },
   {
     name: "Lentejas exprés",
@@ -117,8 +154,12 @@ window.RECETAS = [
     servings: 3,
     etiquetas: ["Tupper"],
     materiasPrimas: ["Verduras"],
+    imageUrl: "",
     ingredients: ["400 g de lentejas cocidas", "1 zanahoria", "1/2 cebolla", "1 tomate", "500 ml de caldo", "Pimentón, aceite y sal"],
-    instructions: "Sofríe la cebolla y la zanahoria. Añade el tomate, el pimentón, las lentejas y el caldo. Cocina a fuego medio durante 12 minutos."
+    instructions: ["Sofríe la cebolla y la zanahoria.", "Añade el tomate, el pimentón, las lentejas y el caldo.", "Cocina a fuego medio durante 12 minutos."],
+    tips: ["Al reposar unos minutos, el caldo espesará ligeramente."],
+    fuente: "Pendiente de indicar",
+    fecha: "Pendiente de indicar"
   },
   {
     name: "Patatas al romero",
@@ -129,8 +170,12 @@ window.RECETAS = [
     servings: 4,
     etiquetas: ["Amigos en casa"],
     materiasPrimas: ["Patatas", "Verduras"],
+    imageUrl: "",
     ingredients: ["600 g de patatas", "2 cucharadas de aceite de oliva", "Romero", "Sal y pimienta"],
-    instructions: "Corta las patatas en gajos. Mézclalas con aceite, romero, sal y pimienta. Hornea a 200 °C durante 35–40 minutos, hasta que estén doradas."
+    instructions: ["Corta las patatas en gajos.", "Mézclalas con aceite, romero, sal y pimienta.", "Hornea a 200 °C durante 35–40 minutos."],
+    tips: ["Extiende las patatas en una sola capa para que se dorenen mejor."],
+    fuente: "Pendiente de indicar",
+    fecha: "Pendiente de indicar"
   },
   {
     name: "Arroz blanco",
@@ -141,8 +186,12 @@ window.RECETAS = [
     servings: 4,
     etiquetas: ["Tupper"],
     materiasPrimas: ["Arroz"],
+    imageUrl: "",
     ingredients: ["200 g de arroz", "400 ml de agua", "1 diente de ajo", "Aceite de oliva y sal"],
-    instructions: "Dora el ajo en un poco de aceite. Añade el arroz y el agua con sal. Cocina tapado a fuego bajo hasta que el arroz esté tierno y haya absorbido el agua."
+    instructions: ["Dora el ajo en un poco de aceite.", "Añade el arroz y el agua con sal.", "Cocina tapado a fuego bajo hasta que el arroz esté tierno."],
+    tips: ["Déjalo reposar tapado unos minutos antes de servir."],
+    fuente: "Pendiente de indicar",
+    fecha: "Pendiente de indicar"
   },
   {
     name: "Ensalada de frutas",
@@ -153,8 +202,12 @@ window.RECETAS = [
     servings: 4,
     etiquetas: ["Amigos en casa"],
     materiasPrimas: ["Verduras"],
+    imageUrl: "",
     ingredients: ["1 manzana", "1 plátano", "1 naranja", "150 g de fresas", "Zumo de medio limón"],
-    instructions: "Lava y corta la fruta en trozos. Mézclala en un bol. Añade el zumo de limón para mantenerla fresca."
+    instructions: ["Lava y corta la fruta en trozos.", "Mézclala en un bol.", "Añade el zumo de limón."],
+    tips: ["Usa fruta de temporada para variar la mezcla."],
+    fuente: "Pendiente de indicar",
+    fecha: "Pendiente de indicar"
   },
   {
     name: "Tortitas de plátano",
@@ -165,8 +218,12 @@ window.RECETAS = [
     servings: 2,
     etiquetas: ["Amigos en casa"],
     materiasPrimas: ["Verduras"],
+    imageUrl: "",
     ingredients: ["1 plátano maduro", "2 huevos", "60 g de harina", "1/2 cucharadita de levadura", "Canela"],
-    instructions: "Aplasta el plátano y mézclalo con los huevos, la harina, la levadura y una pizca de canela. Cocina pequeñas porciones en una sartén antiadherente."
+    instructions: ["Aplasta el plátano.", "Mézclalo con los huevos, la harina, la levadura y la canela.", "Cocina pequeñas porciones en una sartén."],
+    tips: ["Dales la vuelta cuando aparezcan burbujas en la superficie."],
+    fuente: "Pendiente de indicar",
+    fecha: "Pendiente de indicar"
   },
   {
     name: "Bizcocho de yogur",
@@ -177,8 +234,12 @@ window.RECETAS = [
     servings: 8,
     etiquetas: ["Amigos en casa"],
     materiasPrimas: ["Verduras"],
+    imageUrl: "",
     ingredients: ["1 yogur natural", "3 huevos", "2 medidas de azúcar", "3 medidas de harina", "1 medida de aceite", "1 sobre de levadura"],
-    instructions: "Bate el yogur con los huevos y el azúcar. Incorpora harina, aceite y levadura. Vierte en un molde. Hornea a 180 °C durante unos 45–50 minutos."
+    instructions: ["Bate el yogur con los huevos y el azúcar.", "Incorpora la harina, el aceite y la levadura.", "Vierte en un molde y hornea a 180 °C durante 45–50 minutos."],
+    tips: ["Comprueba la cocción con un palillo pinchando el centro."],
+    fuente: "Pendiente de indicar",
+    fecha: "Pendiente de indicar"
   },
   {
     name: "Alitas de pollo glaseadas con gochujang",
@@ -189,8 +250,12 @@ window.RECETAS = [
     servings: 4,
     etiquetas: ["Amigos en casa"],
     materiasPrimas: ["Carne"],
-    ingredients: ["Alitas de pollo (aprox. 1 kg)", "Sal y pimienta", "1 cucharada de gochujang", "2 cucharadas de miel", "2 cucharadas de salsa de soja", "2 cucharadas de azúcar moreno", "1 diente de ajo rallado", "25 g de mantequilla", "1 cucharada de aceite de sésamo", "Crème fraîche", "Zumo de limón", "Cebolla crujiente", "Cebollino"],
-    instructions: "Mezcla en una sartén el gochujang, la miel, la soja, el azúcar moreno y el ajo. Limpia las alitas y sazónalas. Hornéalas hasta que estén bien hechas. Mézclalas con el glaseado y sirve con crema agria y limón."
+    imageUrl: "",
+    ingredients: ["Alitas de pollo (aprox. 1 kg)", "Sal y pimienta", "1 cucharada de gochujang", "2 cucharadas de miel", "2 cucharadas de salsa de soja", "2 cucharadas de azúcar moreno", "1 diente de ajo rallado", "25 g de mantequilla", "Aceite de sésamo", "Crema agria", "Zumo de limón", "Cebolla crujiente", "Cebollino"],
+    instructions: ["Mezcla el gochujang, la miel, la soja, el azúcar moreno y el ajo.", "Limpia las alitas y sazónalas.", "Hornéalas hasta que estén cocinadas.", "Mézclalas con el glaseado y sirve con crema agria y limón."],
+    tips: ["Reserva parte del glaseado para añadirlo al servir."],
+    fuente: "Pendiente de indicar",
+    fecha: "Pendiente de indicar"
   },
   {
     name: "Curry de garbanzos",
@@ -201,8 +266,12 @@ window.RECETAS = [
     servings: 3,
     etiquetas: ["Tupper"],
     materiasPrimas: ["Verduras"],
+    imageUrl: "",
     ingredients: ["400 g de garbanzos cocidos", "200 ml de leche de coco", "200 g de tomate triturado", "1/2 cebolla", "1 cucharada de curry", "Aceite y sal"],
-    instructions: "Sofríe la cebolla y añade el curry. Incorpora el tomate, la leche de coco y los garbanzos. Cocina a fuego suave durante 20 minutos y ajusta de sal."
+    instructions: ["Sofríe la cebolla y añade el curry.", "Incorpora el tomate, la leche de coco y los garbanzos.", "Cocina a fuego suave durante 20 minutos y ajusta de sal."],
+    tips: ["Ajusta la cantidad de curry a tu gusto."],
+    fuente: "Pendiente de indicar",
+    fecha: "Pendiente de indicar"
   },
   {
     name: "Kimchi casero",
@@ -213,7 +282,11 @@ window.RECETAS = [
     servings: 8,
     etiquetas: ["Tupper"],
     materiasPrimas: ["Verduras"],
+    imageUrl: "",
     ingredients: ["1 col china", "1 zanahoria", "1 rábano daikon", "Sal gruesa", "Ajo y jengibre", "Gochugaru o chile coreano"],
-    instructions: "Sala la col y déjala reposar unas horas. Enjuágala y mézclala con las verduras y la pasta de ajo, jengibre y chile. Envasa en un recipiente limpio y deja fermentar 1–2 días a temperatura ambiente; después refrigera."
+    instructions: ["Sala la col y déjala reposar unas horas.", "Enjuágala y mézclala con las verduras y la pasta de ajo, jengibre y chile.", "Envasa en un recipiente limpio y deja fermentar 1–2 días a temperatura ambiente.", "Después refrigera."],
+    tips: ["Comprueba el sabor durante la fermentación y refrigera cuando te guste."],
+    fuente: "Pendiente de indicar",
+    fecha: "Pendiente de indicar"
   }
 ];
