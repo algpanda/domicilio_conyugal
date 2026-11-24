@@ -8,7 +8,7 @@ window.RECETAS = [
   region: "India",
   tiempoMinutos: 60,
   servings: 4,
-  etiquetas: ["Tupper","Comida en casa"],
+  etiquetas: ["Tupper","Amigos en casa"],
   materiasPrimas: ["Verduras"],
   imageUrl: "https://raw.githubusercontent.com/algpanda/domicilio-conyugal-images/refs/heads/main/20250509_141433.jpg",
   ingredients: [
