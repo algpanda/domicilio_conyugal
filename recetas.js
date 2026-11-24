@@ -10,7 +10,7 @@ window.RECETAS = [
     materiasPrimas: ["Verduras"],
     imageUrl: "https://raw.githubusercontent.com/algpanda/domicilio-conyugal-images/main/ensalada_garbanzos.jfif",
     ingredients: ["400 g de garbanzos cocidos", "1 tomate", "1/2 pepino", "1/4 de cebolla roja", "Aceite de oliva, vinagre y sal"],
-    instructions: "Lava y escurre los garbanzos. Trocea las verduras. Mézclalas con los garbanzos y aliña al gusto."
+    instructions: ["Lava y escurre los garbanzos.","Trocea las verduras. Mézclalas con los garbanzos y aliña al gusto."]
   },
   {
     name: "Pasta con tomate y atún",
