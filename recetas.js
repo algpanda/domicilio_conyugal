@@ -43,10 +43,28 @@ window.RECETAS = [
     etiquetas: ["Tupper"],
     materiasPrimas: ["Carne"],
     imageUrl: "https://raw.githubusercontent.com/algpanda/domicilio-conyugal-images/refs/heads/main/cachapa_reina_pipiada.png",
-    ingredients: ["Pendiente"],
-    instructions: ["Pendiente"],
-    tips: ["-"],
-    fuente: "-",
+    ingredients: [
+      "Pollo",
+      "Aguacate",
+      "Mayonesa",
+      "Cebolla morada",
+      "Cilantro",
+      "Lima",
+      "Maíz crudo",
+      "Azúcar",
+      "Mantequilla",
+      "Sal",
+      "Pimienta",
+      "Laurel"
+    ],
+    instructions: [
+      "Hervir agua con sal, pimienta y laurel.",
+      "En cuanto rompa a hervir, sumergir el pollo y apagar el fuego.",
+      "Deshilachar el pollo frío y mezclarlo con aguacate, mayonesa, cebolla morada, cilantro, lima, sal y pimienta.",
+      "Para la cachapa, triturar maíz crudo, azúcar y sal y cocinar con mantequilla la masa."
+    ],
+    tips: ["Cocinar la cachapa tapada para que se cuaje"],
+    fuente: "Merecumbé (Las Tablas)",
     fecha: "02/12/2025"
   },
   {
@@ -58,9 +76,23 @@ window.RECETAS = [
     etiquetas: [],
     materiasPrimas: [],
     imageUrl: "https://raw.githubusercontent.com/algpanda/domicilio-conyugal-images/refs/heads/main/chocolate_pan_aceite_sal.png",
-    ingredients: ["Pendiente"],
-    instructions: ["Pendiente"],
-    tips: ["-"],
+    ingredients: [
+      "1 naranja - opcional",
+      "200 g de nata para montar",
+      "200 g de chocolate negro",
+      "30 g de mantequilla",
+      "Pan",
+      "Aceite de oliva virgen extra",
+      "Sal marina en escamas"
+    ],
+    instructions: [
+      "Infusiona la nata con la piel de la naranja.",
+      "Cuela la nata sobre el chocolate en pedazos para derretirlo y mezclarlo.",
+      "Emulsiónalo con la mantequilla en dados y sal.",
+      "Reparte la ganache en una fuente para que se enfríe en la nevera tras golpearla para quitar burbujas.",
+      "Sirve con aceite, pan tostado y sal."
+    ],
+    tips: ["Para servir calienta una cuchara (agua, soplete)"],
     fuente: "https://paulasapron.com/pan-con-chocolate-aceite-y-sal/",
     fecha: "22/08/2025"
   },
@@ -95,8 +127,8 @@ window.RECETAS = [
       "Pepinillos",
       "Mostaza antigua"
     ],
-    instructions: ["Pendiente"],
-    tips: ["Picar y mezclar todo"],
+    instructions: ["Picar y mezclar todo"],
+    tips: ["-"],
     fuente: "-",
     fecha: "17/08/2025"
   },
@@ -145,10 +177,17 @@ window.RECETAS = [
       "75ml de zumo de limón (unos 2 limones)",
       "Ralladura de 2 limones",
       "Una pizca de sal",
-      "Gelatina (opcional)"
+      "Gelatina (opcional)",
+      "Galletas digestive",
+      "Mantequilla"
     ],
-    instructions: ["Pendiente"],
-    tips: ["-"],
+    instructions: [
+      "Enfriar una base de galleta triturada con mantequilla.",
+      "Disolver todos los ingredientes en un cazo.",
+      "Dejarlo enfriar sobre la base.",
+      "Rallar limón por encima."
+    ],
+    tips: ["Enfriar con film en contacto con la superficie para que no se reseque"],
     fuente: "https://paulasapron.com/tarta-de-limon-sin-horno-y-cremosa/",
     fecha: "21/06/2025"
   },
@@ -161,9 +200,17 @@ window.RECETAS = [
     etiquetas: ["Tupper"],
     materiasPrimas: ["Verduras"],
     imageUrl: "https://raw.githubusercontent.com/algpanda/domicilio-conyugal-images/refs/heads/main/okra.png",
-    ingredients: ["Pendiente"],
-    instructions: ["Pendiente"],
-    tips: ["-"],
+    ingredients: [
+      "Okra",
+      "Cebolla, tomate…",
+      "Cúrcuma, curry, canela…"
+    ],
+    instructions: [
+      "Sofreír las verduras.",
+      "Añadir la okra y saltear hasta que tenga buena textura.",
+      "Especiar."
+    ],
+    tips: ["Cuidado con el moco de la okra"],
     fuente: "Sri Lanka",
     fecha: "16/05/2025"
   },
@@ -176,9 +223,23 @@ window.RECETAS = [
     etiquetas: [],
     materiasPrimas: [],
     imageUrl: "https://raw.githubusercontent.com/algpanda/domicilio-conyugal-images/refs/heads/main/tarta_fresa_nata.png",
-    ingredients: ["Pendiente"],
-    instructions: ["Pendiente"],
-    tips: ["-"],
+    ingredients: [
+      "Bizcocho de tita",
+      "Mermelada de fresa",
+      "Sirope de fresas",
+      "Fresas",
+      "Nata montada"
+    ],
+    instructions: [
+      "Cocinar un bizcocho de tita, dejar enfriar y cortar por la mitad.",
+      "Mojar una mitad con sirope de fresas y untarla con mermelada.",
+      "Colocar las fresas del sirope encima.",
+      "Capa de nata montada.",
+      "Colocar la otra tapa de bizcocho encima y mojarla con el resto del sirope y untarla con más mermelada.",
+      "Capa de nata montada.",
+      "Fresas al natural por encima."
+    ],
+    tips: ["Cuidado al montar la nata para que no se corte, tiene que estar todo muy frío"],
     fuente: "https://diegodoal.com/recetas/tarta-fresas-nata",
     fecha: "11/05/2025"
   },
