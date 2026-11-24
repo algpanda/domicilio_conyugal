@@ -5,16 +5,16 @@
     #recipe-details-dialog .recipe-dialog-facts { display: none; }
     #recipe-details-dialog > .recipe-dialog-header > .eyebrow { display: block; color: #8a947e; font-size: 10px; font-weight: 700; letter-spacing: .16em; }
     #recipe-details-dialog .recipe-dialog-header { justify-content: space-between; }
-    .recipe-detail-layout { display: grid; grid-template-columns: minmax(0, 1fr) minmax(150px, .8fr); gap: 16px; align-items: stretch; margin-top: 16px; }
-    .recipe-detail-ingredients { padding: 16px 18px; border-radius: 12px; background: #f0f3eb; }
-    .recipe-detail-ingredients h3, .recipe-detail-preparation h3 { margin: 0 0 10px; color: #344c3b; font-size: 14px; }
+    .recipe-detail-layout { display: block; margin-top: 16px; }
+    .recipe-detail-ingredients { display: grid; grid-template-columns: minmax(0, 1fr) 120px; gap: 16px; align-items: center; padding: 16px 18px; border-radius: 12px; background: #f0f3eb; }
+    .recipe-detail-ingredients h3 { grid-column: 1 / -1; margin: 0; color: #344c3b; font-size: 14px; }
     .recipe-detail-ingredients ul, .recipe-detail-preparation ul { display: grid; gap: 7px; margin: 0; padding-left: 19px; color: #505c51; font-size: 12px; line-height: 1.6; }
-    .recipe-detail-image { width: 100%; height: 100%; min-height: 180px; max-height: 300px; object-fit: cover; border-radius: 12px; background: #eef1e8; }
+    .recipe-detail-image { display: block; width: 120px; height: 120px; aspect-ratio: 1; object-fit: cover; border-radius: 10px; background: #e5eadf; }
     .recipe-detail-preparation { margin-top: 20px; }
+    .recipe-detail-preparation h3 { margin: 0 0 10px; color: #344c3b; font-size: 14px; }
     @media (max-width: 520px) {
-      .recipe-detail-layout { grid-template-columns: minmax(0, 1fr) minmax(100px, .65fr); gap: 10px; }
-      .recipe-detail-ingredients { padding: 13px; }
-      .recipe-detail-image { min-height: 145px; }
+      .recipe-detail-ingredients { grid-template-columns: minmax(0, 1fr) 96px; gap: 10px; padding: 13px; }
+      .recipe-detail-image { width: 96px; height: 96px; }
     }
   `;
   document.head.append(styles);
@@ -38,7 +38,15 @@
       .filter(Boolean);
   }
 
+  function removeIngredientCounts() {
+    document.querySelectorAll(".recipe-card .recipe-details").forEach((details) => {
+      const withoutCount = details.textContent.replace(/^\s*\d+\s+ingredientes\s*·\s*/i, "");
+      if (withoutCount !== details.textContent) details.textContent = withoutCount;
+    });
+  }
+
   function updateRecipeDialog() {
+    removeIngredientCounts();
     const dialog = document.querySelector("#recipe-details-dialog");
     const content = document.querySelector("#recipe-dialog-content");
     if (!dialog?.open || !content) return;
@@ -73,7 +81,8 @@
     image.alt = `Imagen de ${recipeName}`;
     image.src = cardImage?.currentSrc || cardImage?.src || recipe.imageUrl || placeholder;
     image.addEventListener("error", () => { image.src = placeholder; }, { once: true });
-    layout.append(ingredientsPanel, image);
+    ingredientsPanel.append(image);
+    layout.append(ingredientsPanel);
 
     const preparation = document.createElement("section");
     preparation.className = "recipe-detail-preparation";
@@ -95,7 +104,7 @@
   }
 
   const observer = new MutationObserver(updateRecipeDialog);
-  observer.observe(document.documentElement, { childList: true, subtree: true });
+  observer.observe(document.documentElement, { childList: true, subtree: true, characterData: true });
   document.addEventListener("DOMContentLoaded", () => {
     const dialog = document.querySelector("#recipe-details-dialog");
     dialog?.addEventListener("close", () => { delete dialog.dataset.formattedRecipe; });
