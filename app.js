@@ -101,9 +101,9 @@ addItem(document.querySelector("#shopping-form"), document.querySelector("#shopp
 
 const recipes = window.RECETAS || [];
 const RECIPES_PER_PAGE = 10;
-const RECIPE_TYPES = ["Ensalada", "Salado", "Guarnición", "Postre", "Merienda"];
+const RECIPE_TYPES = ["Ensalada", "Salado", "Guarnición", "Postre", "Merienda","Aperitivo","Pan"];
 const INGREDIENT_GROUPS = ["Carne", "Pescado", "Marisco", "Verduras", "Pasta", "Arroz", "Patatas"];
-const RECIPE_REGIONS = ["India", "Corea", "Japón", "México", "Murcia", "Grecia", "Italia", "Sudamérica"];
+const RECIPE_REGIONS = ["India", "Corea", "Japón", "México", "Murcia", "Grecia", "Italia", "Sudamérica","Mediterránea","Oriente Próximo","USA"];
 const DURATION_OPTIONS = [
   { value: "under30", label: "<30 minutos" },
   { value: "30to60", label: "entre 30 - 60 minutos" },
