@@ -10,7 +10,7 @@ window.RECETAS = [
   servings: 4,
   etiquetas: ["Tupper","Comida en casa"],
   materiasPrimas: ["Verduras"],
-  imageUrl: "Pendiente de indicar",
+  imageUrl: "https://raw.githubusercontent.com/algpanda/domicilio-conyugal-images/refs/heads/main/pumpkin_curry.jpg",
   ingredients: [
     "Calabaza",
     "1 cebolla",
@@ -18,6 +18,7 @@ window.RECETAS = [
     "Tomate concentrado",
     "Tomate triturado",
     "1 manzana reineta",
+    "Salsa de soja",
     "Leche de coco (o nata en su defecto)",
     "Curry, comino, cúrcuma y canela",
     "Curry leaves"
@@ -25,7 +26,7 @@ window.RECETAS = [
   instructions: [
     "Sofreír la cebolla y ajo, echar el tomate concentrado, tomate triturado y las especias.",
     "Echar la calabaza y cubrir con agua. Cocinar a medio fuego unos 20 minutos.",
-    "Al finalizar, añade la manzana rallada y la leche de coco (o nata) y cocina 3 minutos más."
+    "Al finalizar, añade la manzana rallada, un chorrito de salsa de soja y la leche de coco (o nata) y cocina 3 minutos más."
   ],
   tips: [
     "Deja la tapa entreabierta para que la calabaza no se pase demasiado y la salsa espese.",
