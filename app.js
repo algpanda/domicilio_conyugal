@@ -110,9 +110,17 @@ const DURATION_OPTIONS = [
   { value: "over60", label: ">1 hora" },
   { value: "overDay", label: ">1 día" }
 ];
-// La duración categórica es el único dato temporal que usa la aplicación.
+const DURATION_LABELS = new Map([
+  ["<30 minutos", "<30 minutos"],
+  ["30 - 60 minutos", "entre 30 - 60 minutos"],
+  ["entre 30 - 60 minutos", "entre 30 - 60 minutos"],
+  [">1 hora", ">1 hora"],
+  [">1 día", ">1 día"]
+]);
+// Conserva las categorías que ya están en el catálogo, incluyendo registros con el nombre antiguo del campo.
 recipes.forEach((recipe) => {
-  recipe.duracion = window.RECIPE_DURATIONS?.[recipe.name] || recipe.duracion || "entre 30 - 60 minutos";
+  const storedDuration = window.RECIPE_DURATIONS?.[recipe.name] || recipe.duracion || recipe.tiempoMinutos;
+  recipe.duracion = DURATION_LABELS.get(storedDuration) || storedDuration || "entre 30 - 60 minutos";
   delete recipe.minutes;
   delete recipe.tiempoMinutos;
 });
@@ -258,7 +266,8 @@ function renderRecipe(recipe, container, onSelect) {
   const card = document.createElement("button"); card.className = "recipe-card"; card.type = "button"; card.setAttribute("aria-label", `Ver receta: ${recipe.name}`);
   const title = document.createElement("h3"); title.textContent = recipe.name;
   const description = document.createElement("p"); description.textContent = recipe.description || "";
-  const details = document.createElement("div"); details.className = "recipe-details"; details.textContent = `${(recipe.ingredients || []).length} ingredientes · ${typeLabel(recipe)}`;
+  const details = document.createElement("div"); details.className = "recipe-details";
+  details.textContent = `${(recipe.ingredients || []).length} ingredientes · ${typeLabel(recipe)}`;
   const tags = document.createElement("div"); tags.className = "recipe-card-tags";
   getRecipeTags(recipe).forEach((tag) => { const badge = document.createElement("span"); badge.className = "recipe-tag-badge"; badge.textContent = tag; tags.append(badge); });
   const prompt = document.createElement("span"); prompt.className = "recipe-card-prompt"; prompt.textContent = "Ver ingredientes y preparación →";
