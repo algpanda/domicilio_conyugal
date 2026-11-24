@@ -1,9 +1,11 @@
-// Actualiza las tarjetas de recetas sin mostrar el contador de ingredientes.
+// Quita el contador de ingredientes sin volver a escribir tarjetas ya limpias.
 (() => {
   function removeIngredientCounts() {
     document.querySelectorAll(".recipe-card .recipe-details").forEach((details) => {
-      const text = details.textContent;
-      details.textContent = text.replace(/^\s*\d+\s+ingredientes(?:\s*·\s*)?/i, "");
+      const currentText = details.textContent;
+      const cleanedText = currentText.replace(/^\s*\d+\s+ingredientes(?:\s*·\s*)?/i, "");
+      // Evita generar mutaciones innecesarias que volverían a disparar el observer indefinidamente.
+      if (cleanedText !== currentText) details.textContent = cleanedText;
     });
   }
 
