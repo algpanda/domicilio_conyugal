@@ -10,7 +10,7 @@ window.RECETAS = [
     tiempoMinutos: "30 - 60 minutos",
     etiquetas: ["Tupper", "Comida en casa"],
     materiasPrimas: ["Verduras"],
-    imageUrl: "https://raw.githubusercontent.com/algpanda/domicilio-conyugal-images/refs/heads/main/pumpkin_curry.jpg",
+    imageUrl: "https://raw.githubusercontent.com/algpanda/domicilio-conyugal-images/refs/heads/main/pumpkin_curry.png",
     ingredients: [
       "Calabaza",
       "Cebolla",
@@ -25,7 +25,7 @@ window.RECETAS = [
     instructions: [
       "Sofreír la cebolla y ajo, echar el tomate concentrado, tomate triturado y las especias.",
       "Echar la calabaza y cubrir con agua. Cocinar a medio fuego unos 20 minutos.",
-      "Al finalizar, echar la manzana rallada y la leche de coco o nata y cocinar 3 minutos."
+      "Al finalizar, echar la manzana rallada, un chorrito de salsa de soja y la leche de coco o nata y cocinar 3 minutos."
     ],
     tips: [
       "Para que no se pase la calabaza mucho y espese la salsa, deja la tapa entreabierta.",
@@ -42,7 +42,7 @@ window.RECETAS = [
     tiempoMinutos: "<30 minutos",
     etiquetas: ["Tupper"],
     materiasPrimas: ["Carne"],
-    imageUrl: "https://raw.githubusercontent.com/algpanda/domicilio-conyugal-images/refs/heads/main/chocolate_pan_aceite_sal.jpg",
+    imageUrl: "https://raw.githubusercontent.com/algpanda/domicilio-conyugal-images/refs/heads/main/chocolate_pan_aceite_sal.png",
     ingredients: ["Pendiente"],
     instructions: ["Pendiente"],
     tips: ["-"],
@@ -57,7 +57,7 @@ window.RECETAS = [
     tiempoMinutos: "<30 minutos",
     etiquetas: [],
     materiasPrimas: [],
-    imageUrl: "https://raw.githubusercontent.com/algpanda/domicilio-conyugal-images/refs/heads/main/cachapa_reina_pipiada.jpg",
+    imageUrl: "https://raw.githubusercontent.com/algpanda/domicilio-conyugal-images/refs/heads/main/cachapa_reina_pipiada.png",
     ingredients: ["Pendiente"],
     instructions: ["Pendiente"],
     tips: ["-"],
