@@ -32,37 +32,16 @@
       <a class="wordmark" href="#inicio" aria-label="Casa en orden, inicio"><span class="brand-mark small" aria-hidden="true">⌂</span> casa<span>en orden</span></a>
       <button id="lock-button" class="text-button" type="button">Bloquear <span aria-hidden="true">↗</span></button>
     </header>
-
     <main id="inicio" class="dashboard">
-      <section class="welcome-row">
-        <div>
-          <p class="eyebrow">NUESTRO HOGAR · <span id="today"></span></p>
-          <h1>Hola, <span class="serif">¿qué ponemos en orden?</span></h1>
-          <p class="muted">Un poquito cada día hace que todo fluya.</p>
-        </div>
-        <div class="welcome-art" aria-hidden="true"><span>✳</span><span>☼</span></div>
-      </section>
-
+      <section class="welcome-row"><div><p class="eyebrow">NUESTRO HOGAR · <span id="today"></span></p><h1>Hola, <span class="serif">¿qué ponemos en orden?</span></h1><p class="muted">Un poquito cada día hace que todo fluya.</p></div><div class="welcome-art" aria-hidden="true"><span>✳</span><span>☼</span></div></section>
       <section class="summary-grid" aria-label="Resumen">
         <article class="summary-card task-summary"><span class="summary-icon" aria-hidden="true">✓</span><div><p>Por hacer</p><strong id="pending-count">0</strong><span>tareas pendientes</span></div></article>
         <article class="summary-card shopping-summary"><span class="summary-icon" aria-hidden="true">＋</span><div><p>Lista de la compra</p><strong id="shopping-count">0</strong><span>cosas por comprar</span></div></article>
         <article class="summary-card note-summary"><span class="summary-icon" aria-hidden="true">♡</span><div><p>Pequeños pasos</p><strong>Hogar</strong><span>que se siente bien</span></div></article>
       </section>
-
       <section class="content-grid">
-        <article class="panel tasks-panel">
-          <div class="panel-heading"><div><p class="eyebrow">PARA HOY</p><h2>Lista de tareas</h2></div><span class="heading-doodle" aria-hidden="true">✳</span></div>
-          <form id="task-form" class="add-form"><label class="sr-only" for="task-input">Añadir una tarea</label><input id="task-input" type="text" placeholder="Ej. Regar las plantas" maxlength="120" required><button class="button button-dark" type="submit">Añadir <span aria-hidden="true">＋</span></button></form>
-          <ul id="task-list" class="item-list"></ul>
-          <p id="empty-tasks" class="empty-state">Aún no hay tareas. ¡Disfruta el momento! 🌿</p>
-        </article>
-
-        <article class="panel shopping-panel">
-          <div class="panel-heading"><div><p class="eyebrow">ANTES DE QUE SE NOS OLVIDE</p><h2>La compra</h2></div><span class="shopping-art" aria-hidden="true">🛒</span></div>
-          <form id="shopping-form" class="add-form"><label class="sr-only" for="shopping-input">Añadir a la compra</label><input id="shopping-input" type="text" placeholder="¿Qué hace falta?" maxlength="120" required><button class="button button-dark" type="submit">Añadir <span aria-hidden="true">＋</span></button></form>
-          <ul id="shopping-list" class="item-list"></ul>
-          <p id="empty-shopping" class="empty-state">La lista está vacía. ¡Todo en orden! ✨</p>
-        </article>
+        <article class="panel tasks-panel"><div class="panel-heading"><div><p class="eyebrow">PARA HOY</p><h2>Lista de tareas</h2></div><span class="heading-doodle" aria-hidden="true">✳</span></div><form id="task-form" class="add-form"><label class="sr-only" for="task-input">Añadir una tarea</label><input id="task-input" type="text" placeholder="Ej. Regar las plantas" maxlength="120" required><button class="button button-dark" type="submit">Añadir <span aria-hidden="true">＋</span></button></form><ul id="task-list" class="item-list"></ul><p id="empty-tasks" class="empty-state">Aún no hay tareas. ¡Disfruta el momento! 🌿</p></article>
+        <article class="panel shopping-panel"><div class="panel-heading"><div><p class="eyebrow">ANTES DE QUE SE NOS OLVIDE</p><h2>La compra</h2></div><span class="shopping-art" aria-hidden="true">🛒</span></div><form id="shopping-form" class="add-form"><label class="sr-only" for="shopping-input">Añadir a la compra</label><input id="shopping-input" type="text" placeholder="¿Qué hace falta?" maxlength="120" required><button class="button button-dark" type="submit">Añadir <span aria-hidden="true">＋</span></button></form><ul id="shopping-list" class="item-list"></ul><p id="empty-shopping" class="empty-state">La lista está vacía. ¡Todo en orden! ✨</p></article>
       </section>
       <footer class="footer-note"><span aria-hidden="true">✿</span> Hecho para vivir mejor, no para hacerlo todo perfecto.</footer>
     </main>
