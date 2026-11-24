@@ -36,6 +36,38 @@ window.RECETAS = [
   fecha: "11/05/2025"
 }
   ,{
+    name: "Cachapa de Reina pipiada",
+    description: "Pendiente de indicar",
+    tipo: "Salado",
+    region: "Sudamérica",
+    tiempoMinutos: 30,
+    servings: 2,
+    etiquetas: ["Tupper"],
+    materiasPrimas: ["Carne"],
+    imageUrl: "Pendiente de indicar",
+    ingredients: ["Pendiente de indicar"],
+    instructions: ["Pendiente de indicar"],
+    tips: [],
+    fuente: "Pendiente de indicar",
+    fecha: "02/12/2025"
+  },
+  {
+    name: "Chocolate, pan, aceite y sal 🍫🥖🧂",
+    description: "Pendiente de indicar",
+    tipo: "Postre",
+    region: "Pendiente de indicar",
+    tiempoMinutos: 30,
+    servings: 2,
+    etiquetas: [],
+    materiasPrimas: [],
+    imageUrl: "Pendiente de indicar",
+    ingredients: ["Pendiente de indicar"],
+    instructions: ["Pendiente de indicar"],
+    tips: [],
+    fuente: "https://paulasapron.com/pan-con-chocolate-aceite-y-sal/",
+    fecha: "22/08/2025"
+  },
+  {
     name: "Ensalada de garbanzos",
     description: "Fresca, saciante y lista en un momento.",
     tipo: "Ensalada",
