@@ -1,17 +1,16 @@
-// Ajusta la ventana de detalles de receta con una presentación visual común.
+// Da formato a los detalles de la receta, incluida la preparación en pasos.
 (() => {
   const styles = document.createElement("style");
   styles.textContent = `
-    #recipe-details-dialog > .recipe-dialog-header > .eyebrow,
     #recipe-details-dialog .recipe-dialog-facts { display: none; }
-    #recipe-details-dialog .recipe-dialog-header { justify-content: flex-end; }
+    #recipe-details-dialog > .recipe-dialog-header > .eyebrow { display: block; color: #8a947e; font-size: 10px; font-weight: 700; letter-spacing: .16em; }
+    #recipe-details-dialog .recipe-dialog-header { justify-content: space-between; }
     .recipe-detail-layout { display: grid; grid-template-columns: minmax(0, 1fr) minmax(150px, .8fr); gap: 16px; align-items: stretch; margin-top: 16px; }
     .recipe-detail-ingredients { padding: 16px 18px; border-radius: 12px; background: #f0f3eb; }
     .recipe-detail-ingredients h3, .recipe-detail-preparation h3 { margin: 0 0 10px; color: #344c3b; font-size: 14px; }
-    .recipe-detail-ingredients ul { display: grid; gap: 7px; margin: 0; padding-left: 19px; color: #505c51; font-size: 12px; line-height: 1.5; }
+    .recipe-detail-ingredients ul, .recipe-detail-preparation ul { display: grid; gap: 7px; margin: 0; padding-left: 19px; color: #505c51; font-size: 12px; line-height: 1.6; }
     .recipe-detail-image { width: 100%; height: 100%; min-height: 180px; max-height: 300px; object-fit: cover; border-radius: 12px; background: #eef1e8; }
     .recipe-detail-preparation { margin-top: 20px; }
-    .recipe-detail-preparation p { margin: 0; color: #505c51; font-size: 12px; line-height: 1.7; }
     @media (max-width: 520px) {
       .recipe-detail-layout { grid-template-columns: minmax(0, 1fr) minmax(100px, .65fr); gap: 10px; }
       .recipe-detail-ingredients { padding: 13px; }
@@ -30,6 +29,15 @@
     </svg>
   `)}`;
 
+  function preparationSteps(instructions, fallback) {
+    const source = Array.isArray(instructions) ? instructions : [instructions || fallback];
+    return source
+      .flatMap((step) => String(step).split(/\n+/))
+      .flatMap((step) => step.split(/(?<=[.!?])\s+(?=[A-ZÁÉÍÓÚÑ¿¡])/u))
+      .map((step) => step.trim())
+      .filter(Boolean);
+  }
+
   function updateRecipeDialog() {
     const dialog = document.querySelector("#recipe-details-dialog");
     const content = document.querySelector("#recipe-dialog-content");
@@ -41,6 +49,8 @@
     const recipe = (window.RECETAS || []).find((item) => item.name === recipeName);
     if (!recipe) return;
 
+    const tagline = dialog.querySelector(".recipe-dialog-header .eyebrow");
+    if (tagline) tagline.textContent = "Chulapa y Chuleta";
     const description = content.querySelector(".recipe-dialog-description");
     const ingredientsHeading = [...content.querySelectorAll("h3")].find((heading) => heading.textContent === "Ingredientes");
     const ingredients = content.querySelector(".recipe-ingredient-list");
@@ -57,6 +67,7 @@
     ingredientsPanel.className = "recipe-detail-ingredients";
     if (ingredientsHeading) ingredientsPanel.append(ingredientsHeading);
     if (ingredients) ingredientsPanel.append(ingredients);
+
     const image = document.createElement("img");
     image.className = "recipe-detail-image";
     image.alt = `Imagen de ${recipeName}`;
@@ -67,7 +78,15 @@
     const preparation = document.createElement("section");
     preparation.className = "recipe-detail-preparation";
     if (instructionsHeading) preparation.append(instructionsHeading);
-    if (instructions) preparation.append(instructions);
+    const steps = preparationSteps(recipe.instructions, instructions?.textContent || "Consulta la receta para conocer la preparación.");
+    const stepList = document.createElement("ul");
+    stepList.className = "recipe-instructions";
+    steps.forEach((step) => {
+      const item = document.createElement("li");
+      item.textContent = step;
+      stepList.append(item);
+    });
+    preparation.append(stepList);
 
     content.replaceChildren(title);
     if (description) content.append(description);
@@ -77,4 +96,8 @@
 
   const observer = new MutationObserver(updateRecipeDialog);
   observer.observe(document.documentElement, { childList: true, subtree: true });
+  document.addEventListener("DOMContentLoaded", () => {
+    const dialog = document.querySelector("#recipe-details-dialog");
+    dialog?.addEventListener("close", () => { delete dialog.dataset.formattedRecipe; });
+  });
 })();
