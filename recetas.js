@@ -88,7 +88,7 @@ window.RECETAS = [
     instructions: [
       "Infusiona la nata con la piel de la naranja.",
       "Cuela la nata sobre el chocolate en pedazos para derretirlo y mezclarlo.",
-      "Emulsiónalo con la mantequilla en dados y sal.",
+      "Emúlsionalo con la mantequilla en dados y sal.",
       "Reparte la ganache en una fuente para que se enfríe en la nevera tras golpearla para quitar burbujas.",
       "Sirve con aceite, pan tostado y sal."
     ],
@@ -164,7 +164,7 @@ window.RECETAS = [
   },
   {
     name: "Tarta de limón 🍋",
-    description: "-",
+    description: "Fresquita para el verano",
     tipo: "Postre",
     region: "Mediterránea",
     tiempoMinutos: "entre 30 - 60 minutos",
@@ -216,7 +216,7 @@ window.RECETAS = [
   },
   {
     name: "Tarta de nata y fresas🍓",
-    description: "-",
+    description: "100% casera",
     tipo: "Postre",
     region: "Mediterránea",
     tiempoMinutos: ">1 día",
@@ -245,25 +245,39 @@ window.RECETAS = [
   },
   {
     name: "Ramen de pollo 🍜",
-    description: "-",
+    description: "Por si se comió poco en Japón",
     tipo: "Salado",
     region: "Japón",
     tiempoMinutos: ">1 hora",
     etiquetas: ["Comida en casa"],
     materiasPrimas: ["Carne"],
     imageUrl: "https://raw.githubusercontent.com/algpanda/domicilio-conyugal-images/refs/heads/main/ramen_pollo.png",
-    ingredients: ["Pendiente"],
-    instructions: [
-      "Caldo de pochar pollo (con huesos) con laurel y pimienta colado al que he añadido salsa de pescado y miso",
-      "Fondo: salsa de soja y aceite de sésamo",
-      "Toppings:",
-      "Pollo pochado",
-      "Champiñones salteados con salsa de soja y de ostras",
-      "Boiled egg 6mins",
-      "Aceite de pimentón"
+    ingredients: [
+      "Carcasa de pollo",
+      "Cebolla",
+      "Zanahoria",
+      "Huevo",
+      "Setas",
+      "Salsa de soja",
+      "Salsa de ostras",
+      "Salsa de pescado",
+      "Fideos",
+      "Miso",
+      "Carne a escoger: pollo cocido, carne picada…",
+      "Aceite de sésamo",
+      "Aceite picante",
+      "Laurel"
     ],
-    tips: ["-"],
-    fuente: "-",
+    instructions: [
+      "Preparar un caldo de pollo en la olla exprés durante 45 mins con la carcasa dorada, cebolla, zanahoria, laurel...",
+      "Cocer un huevo durante 6 minutos.",
+      "Saltear setas con salsa de soja y de ostras.",
+      "Colocar al fondo del bowl salsa de soja y los fideos cocidos, verter por encima el caldo caliente con miso y salsa de pescado disueltos.",
+      "Colocar por encima el huevo abierto, las setas y la carne a escoger.",
+      "Terminar con aceite de sésamo y aceite picante."
+    ],
+    tips: ["Para hacer un caldo más rápido se puede hervir en agua carne de pollo y utilizarla después como topping"],
+    fuente: "Sobredosis de ramen en Japón",
     fecha: "26/04/2025"
   },
   {
@@ -275,11 +289,16 @@ window.RECETAS = [
     etiquetas: ["Comida en casa"],
     materiasPrimas: [],
     imageUrl: "https://raw.githubusercontent.com/algpanda/domicilio-conyugal-images/refs/heads/main/Flammkuchen.png",
-    ingredients: ["Pendiente"],
+    ingredients: [
+      "Harina 250g",
+      "Agua 125ml",
+      "Aceite 25ml",
+      "Sal"
+    ],
     instructions: [
       "Para dos masas: 250g de harina, 125ml de agua, 25ml de aceite y sal. Amasar y dejar reposando media hora.",
       "Dividir en dos y estirar lo más fino posible.",
-      "Hornear al máximo del horno, con la bandeja/piedra precalentada y en la rendija más baja. 10 mins o 5 y 5 si el horno reparte mal el calor."
+      "Hornear al máximo del horno, con la bandeja/piedra precalentada y en la rendija más baja. 10 mins o 5 y 5 (rotando) si el horno reparte mal el calor."
     ],
     tips: ["-"],
     fuente: "https://paulasapron.com/flammkuchen-tradicional/",
@@ -294,60 +313,108 @@ window.RECETAS = [
     etiquetas: [],
     materiasPrimas: ["Verduras"],
     imageUrl: "https://raw.githubusercontent.com/algpanda/domicilio-conyugal-images/refs/heads/main/egg_kottu.png",
-    ingredients: ["Pendiente"],
-    instructions: ["Pendiente"],
-    tips: ["-"],
+    ingredients: [
+      "Pan plano",
+      "Zanahoria",
+      "Cebolla",
+      "Huevos",
+      "Especias: curry, canela, hojas de curry…"
+    ],
+    instructions: [
+      "Saltear las verduras picadas o ralladas.",
+      "Añadir el pan picado.",
+      "Añadir las especias.",
+      "Coronar con huevo."
+    ],
+    tips: ["Pan plano necesario al 100%"],
     fuente: "Sri Lanka",
     fecha: "21/04/2025"
   },
   {
     name: "Pitas caseras",
-    description: "",
+    description: "Otro alimento diferente a las pitas de supermercado",
     tipo: "Pan",
-    region: "India",
+    region: "Oriente Próximo",
     tiempoMinutos: ">1 hora",
     etiquetas: [],
     materiasPrimas: [],
     imageUrl: "https://raw.githubusercontent.com/algpanda/domicilio-conyugal-images/refs/heads/main/pitas.png",
-    ingredients: ["Pendiente"],
+    ingredients: [
+      "Harina 360g",
+      "Levadura seca 5g",
+      "Sal",
+      "Agua 240ml",
+      "AOVE"
+    ],
     instructions: [
-      "Mezclar 360g de harina, 5g levadura seca y sal. Amasar con 240ml de agua y un poco de aceite si quieres.",
-      "Fermentar 2 horas.",
-      "Separar en nueve bolas de 65g. Estirar pero sin que sean translúcidas.",
+      "Mezclar los secos.",
+      "Amasar junto al agua y un chorrito de aceite (opcional).",
+      "Fermentar durante dos horas.",
+      "Separar en 9 bolas de 65g.",
+      "Estirar pero sin que lleguen a ser translúcidas.",
       "Cocinar 3 mins en la cocotte precalentada a toda trisca en el horno con un chorrín de aceite."
     ],
-    tips: ["-"],
-    fuente: "Sri Lanka",
+    tips: [
+      "Se pueden cocinar en horno o en vitro",
+      "Cuidado con el aceite de la cocotte, al estar tan caliente puede quemarse"
+    ],
+    fuente: "Al Mrzab (Abu Dhabi)",
     fecha: "21/04/2025"
   },
   {
     name: "Baba ganoush",
-    description: "",
+    description: "Para sacar al centro y que desaparezca en un abrir y cerrar de ojos",
     tipo: "Aperitivo",
     region: "Oriente Próximo",
     tiempoMinutos: "<30 minutos",
     etiquetas: [],
     materiasPrimas: ["Verduras"],
     imageUrl: "https://raw.githubusercontent.com/algpanda/domicilio-conyugal-images/refs/heads/main/baba_ganoush.png",
-    ingredients: ["Berenjenas asadas"],
-    instructions: ["Pendiente"],
-    tips: ["-"],
-    fuente: "Abu Dhabi",
+    ingredients: [
+      "Berenjena",
+      "Ajo",
+      "Yogur",
+      "Tahini",
+      "Aceite de oliva virgen extra",
+      "Zumo de limón",
+      "Comino molido",
+      "Pimentón dulce",
+      "Pimienta negra molida",
+      "Sal"
+    ],
+    instructions: [
+      "Asar las berenjenas.",
+      "Triturarlas con el resto de ingredientes.",
+      "Servir con un chorro de aceite y granada."
+    ],
+    tips: ["Dejar reposar un rato para que se conozcan los sabores"],
+    fuente: "Al Mrzab (Abu Dhabi)",
     fecha: "20/04/2025"
   },
   {
     name: "Arayes",
-    description: "",
+    description: "La mejor hamburguesa del mundo estaba en Abu Dhabi",
     tipo: "Salado",
     region: "Oriente Próximo",
     tiempoMinutos: "<30 minutos",
     etiquetas: [],
     materiasPrimas: ["Carne"],
     imageUrl: "https://raw.githubusercontent.com/algpanda/domicilio-conyugal-images/refs/heads/main/arayes.png",
-    ingredients: ["Carne picada"],
-    instructions: ["Pendiente"],
-    tips: ["-"],
-    fuente: "Abu Dhabi",
+    ingredients: [
+      "Carne picada",
+      "Pitas",
+      "Cebolla",
+      "Ajo",
+      "Especias: kebab mix, comino, clavo, canela, hierbabuena, sal y pimienta"
+    ],
+    instructions: [
+      "Picar o rallar la cebolla y el ajo.",
+      "Mezclarlas con la carne y las especias.",
+      "Rellenar de la mezcla pitas partidas a la mitad o en cuartos.",
+      "Marcar bien en la sartén."
+    ],
+    tips: ["Acompañar de alguna salsa de yogur"],
+    fuente: "Al Mrzab (Abu Dhabi)",
     fecha: "19/04/2025"
   },
   {
@@ -361,12 +428,40 @@ window.RECETAS = [
     imageUrl: "https://raw.githubusercontent.com/algpanda/domicilio-conyugal-images/refs/heads/main/pastel_carne.png",
     ingredients: [
       "Carne picada",
-      "Puré de patata",
-      "Guisantes"
+      "Patatas",
+      "Bacon",
+      "Cebolla",
+      "Zanahorias",
+      "Setas",
+      "Caldo",
+      "Vino blanco",
+      "Leche entera",
+      "Concentrado de tomate",
+      "Guisantes congelados",
+      "Parmesano",
+      "Gruyere",
+      "Apio",
+      "Ajo",
+      "Perejil",
+      "Aceite de oliva virgen extra",
+      "Sal",
+      "Pimienta negra",
+      "Cebollino"
     ],
-    instructions: ["Pendiente"],
+    instructions: [
+      "Dora la carne picada. Retírala y resérvala.",
+      "Cocina el bacon hasta que suelte la grasa. Añade las setas.",
+      "Añade el ajo y las verduras.",
+      "Devuelve la carne y añade el perejil. Haz un hueco y tuesta el concentrado de tomate.",
+      "Añade la leche y reduce hasta que casi desaparezca. Después añade el vino y reduce un par de minutos.",
+      "Añade el caldo y cocina 30 minutos hasta que reduzca.",
+      "Mezcla los guisantes congelados con el ragú y pásalo todo a una fuente de horno, presionando para dejarlo parejo.",
+      "Cubre con el puré de patatas (mezclado con parmesano) y ralla por encima más queso.",
+      "Hornea a 180 °C durante 20 minutos, hasta que esté dorado.",
+      "Deja reposar 20 minutos y sirve con cebollino."
+    ],
     tips: ["-"],
-    fuente: "-",
+    fuente: "https://diegodoal.com/recetas/pastel-carne",
     fecha: "19/03/2025"
   },
   {
@@ -507,11 +602,18 @@ window.RECETAS = [
     materiasPrimas: ["Verduras"],
     imageUrl: "https://raw.githubusercontent.com/algpanda/domicilio-conyugal-images/refs/heads/main/zarangollo.png",
     ingredients: [
+      "Huevos",
       "Calabacín",
-      "Huevos"
+      "Cebolla"
     ],
-    instructions: ["Pendiente"],
-    tips: ["-"],
+    instructions: [
+      "Sofreír cebolla y calabacín.",
+      "Añadir huevos y hacer un revuelto."
+    ],
+    tips: [
+      "SIN pimienta",
+      "Añadir queso para extra de cremosidad"
+    ],
     fuente: "Los bares de Murcia",
     fecha: "02/12/2024"
   },
@@ -545,7 +647,16 @@ window.RECETAS = [
     etiquetas: ["Tupper"],
     materiasPrimas: ["Marisco"],
     imageUrl: "https://raw.githubusercontent.com/algpanda/domicilio-conyugal-images/refs/heads/main/calamares_rellenos.png",
-    ingredients: ["Calamares"],
+    ingredients: [
+      "Calamares",
+      "Chalota",
+      "Tomate concentrado",
+      "Tomate cherry",
+      "Pimiento asado",
+      "Hierbas aromáticas: tomillo, orégano…",
+      "Vinagre",
+      "Limón"
+    ],
     instructions: [
       "Sofrito de chalota, tomate concentrado, cherries y las patitas de los calamari.",
       "Aromatizar con hierbas, vinagre y lemon zest.",
@@ -555,5 +666,238 @@ window.RECETAS = [
     tips: ["Dejar margen porque encogen mucho al dorarlos"],
     fuente: "https://www.instagram.com/reels/CwKU_W0oVBv/",
     fecha: "24/05/2024"
+  },
+  {
+    name: "Ensalada griega",
+    description: "El mediterraneo en todo su esplendor",
+    tipo: "Ensalada",
+    region: "Grecia",
+    tiempoMinutos: "<30 minutos",
+    etiquetas: [],
+    materiasPrimas: ["Verduras"],
+    imageUrl: "https://raw.githubusercontent.com/algpanda/domicilio-conyugal-images/refs/heads/main/ensalada_griega.png",
+    ingredients: [
+      "Tomate",
+      "Pepino",
+      "Cebolla",
+      "Pimiento verde",
+      "Queso feta",
+      "Orégano",
+      "Vinagre",
+      "AOVE"
+    ],
+    instructions: [
+      "Poner a remojo la cebolla en juliana.",
+      "Añadir el resto de verduras.",
+      "Sazonar."
+    ],
+    tips: ["-"],
+    fuente: "Bar de \"La alemana\" (Meteora)",
+    fecha: "16/05/2024"
+  },
+  {
+    name: "Spanakopita",
+    description: "Las baklavas que puedo permitirme",
+    tipo: "Aperitivo",
+    region: "Grecia",
+    tiempoMinutos: ">1 hora",
+    etiquetas: ["Tupper"],
+    materiasPrimas: ["Verduras"],
+    imageUrl: "https://raw.githubusercontent.com/algpanda/domicilio-conyugal-images/refs/heads/main/spanakopita.png",
+    ingredients: [
+      "Espinacas (350 g)",
+      "Perejil (60 g)",
+      "Cebolla (1)",
+      "Arroz (74 g)",
+      "Huevo (1)",
+      "Queso feta (225 g)",
+      "Masa filo",
+      "Aceite de oliva virgen extra",
+      "Sal",
+      "Pimienta (mucha)"
+    ],
+    instructions: [
+      "Romper y masajear 350gr de espinacas, 60gr de perejil, aove, sal y mucha pimienta.",
+      "Añadir una cebolla sofrita, 74gr de arroz y 1 huevo y volver a masajear.",
+      "Mezclar con 225gr de queso feta.",
+      "Colocar varias capas intercaladas de masa filo y aceite.",
+      "Extender todo el relleno.",
+      "Colocar el resto de capas de la misma forma.",
+      "Media hora de nevera, cortarlo, aceite por encima y 40 mins de horno a 200ºC o hasta que esté dorada."
+    ],
+    tips: ["-"],
+    fuente: "ΑΡΙΣΤΟΝ ΛΟΜΠΟΤΕΣΗΣ (Atenas)",
+    fecha: "25/04/2024"
+  },
+  {
+    name: "Carrilleras con puré de patata",
+    description: "El tupper de la gente guay",
+    tipo: "Salado",
+    region: "Mediterránea",
+    tiempoMinutos: ">1 hora",
+    etiquetas: ["Tupper", "Comida en casa"],
+    materiasPrimas: ["Carne", "Patatas"],
+    imageUrl: "https://raw.githubusercontent.com/algpanda/domicilio-conyugal-images/refs/heads/main/carrilleras_pure_patata.png",
+    ingredients: [
+      "Carrilleras",
+      "Cebolla",
+      "Zanahoria",
+      "Tomate concentrado",
+      "Tomate frito",
+      "Carne de ñora",
+      "Vino",
+      "Puré de patata"
+    ],
+    instructions: [
+      "Marcar las carrilleras y retirar.",
+      "Sofrito de cebolla y zanahoria.",
+      "Añadir tomate concentrado, tomate frito, carne de ñora…",
+      "Desglasar con vino.",
+      "Devolver las carrilleras y cubrir con agua.",
+      "Cocer 45 mins en olla exprés.",
+      "Reducir la salsa.",
+      "Servir sobre puré de patata y bañada con salsa."
+    ],
+    tips: [
+      "Triturar las verduras junto al caldo o desecharlas y reducir el líquido",
+      "Deshilachar las carrilleras y mezclarlas con la reducción. Enfriarlas en un tupper y servirlas en lingotes marcados a la plancha"
+    ],
+    fuente: "",
+    fecha: "25/04/2024"
+  },
+  {
+    name: "Gnochis con salmón y parmesano",
+    description: "Oficialmente hemos superado a los gnochis a la italiana",
+    tipo: "Salado",
+    region: "Italia",
+    tiempoMinutos: "<30 minutos",
+    etiquetas: [],
+    materiasPrimas: ["Pescado", "Pasta"],
+    imageUrl: "https://raw.githubusercontent.com/algpanda/domicilio-conyugal-images/refs/heads/main/gnochis_salmon.png",
+    ingredients: [
+      "Gnochis",
+      "Salmón",
+      "Nata",
+      "Parmesano"
+    ],
+    instructions: [
+      "Marcar el salmón. Retirar.",
+      "Marcar los gnochis.",
+      "Devolver el salmón y añadir nata.",
+      "Reducir y rematar con parmesano."
+    ],
+    tips: ["-"],
+    fuente: "-",
+    fecha: "16/04/2024"
+  },
+  {
+    name: "Curry japonés de pollo y verduras 🥦🥕🧅",
+    description: "EL plato no esperado de Japón",
+    tipo: "Salado",
+    region: "Japón",
+    tiempoMinutos: "entre 30 - 60 minutos",
+    etiquetas: ["Tupper"],
+    materiasPrimas: ["Verduras", "Patatas"],
+    imageUrl: "https://raw.githubusercontent.com/algpanda/domicilio-conyugal-images/refs/heads/main/curry_japones.png",
+    ingredients: [
+      "Patatas",
+      "Zanahorias",
+      "Cebolla",
+      "Pimiento",
+      "Brócoli (opcional)",
+      "Proteína: pollo, costilla...",
+      "Especias: canela, comino, curry y laurel",
+      "Manzana",
+      "Salsa de soja"
+    ],
+    instructions: [
+      "Cocinar la carne (por ejemplo, marcar contramuslos de pollo).",
+      "Dorar en trozos grandes la cebolla, la zanahoria y el pimiento.",
+      "Incluir las especias y chascar las patatas.",
+      "Cubrir con agua y hervir 20 minutos.",
+      "Añadir el brócoli 5 minutos antes de terminar.",
+      "Rallar una manzana y añadir un chorrito de salsa de soja.",
+      "Devolver la carne y reposar."
+    ],
+    tips: ["Servir con arroz blanco"],
+    fuente: "https://diegodoal.com/recetas/curry-japones",
+    fecha: "31/03/2024"
+  },
+  {
+    name: "Chana Masala",
+    description: "",
+    tipo: "Salado",
+    region: "India",
+    tiempoMinutos: "entre 30 - 60 minutos",
+    etiquetas: ["Tupper"],
+    materiasPrimas: ["Legumbres"],
+    imageUrl: "https://raw.githubusercontent.com/algpanda/domicilio-conyugal-images/refs/heads/main/chana_masala.png",
+    ingredients: ["Pendiente"],
+    instructions: ["Pendiente"],
+    tips: ["-"],
+    fuente: "-",
+    fecha: ""
+  },
+  {
+    name: "Tarta de manzana",
+    description: "",
+    tipo: "Postre",
+    region: "Mediterránea",
+    tiempoMinutos: "entre 30 - 60 minutos",
+    etiquetas: [],
+    materiasPrimas: [],
+    imageUrl: "https://raw.githubusercontent.com/algpanda/domicilio-conyugal-images/refs/heads/main/tarta_manzana.png",
+    ingredients: ["Pendiente"],
+    instructions: ["Pendiente"],
+    tips: ["-"],
+    fuente: "-",
+    fecha: ""
+  },
+  {
+    name: "Lentejas con curry y langonstins 🦐",
+    description: "Receta ❌⭕",
+    tipo: "Salado",
+    region: "India",
+    tiempoMinutos: "entre 30 - 60 minutos",
+    etiquetas: ["Tupper"],
+    materiasPrimas: ["Legumbres", "Marisco"],
+    imageUrl: "https://raw.githubusercontent.com/algpanda/domicilio-conyugal-images/refs/heads/main/lentejas_curry_langostinos.png",
+    ingredients: [
+      "Lentejas",
+      "Cabezas de carabinero",
+      "Carabineros",
+      "Jerez",
+      "Caldo de pollo",
+      "Zanahoria",
+      "Jengibre",
+      "Limón",
+      "Ajo",
+      "Tomate cherry",
+      "Patata",
+      "Curry",
+      "Comino",
+      "Tomate frito",
+      "Hierbabuena",
+      "Mantequilla",
+      "Sal"
+    ],
+    instructions: [
+      "Remojar las lentejas 3 horas.",
+      "Pochar las cabezas de carabineros a fuego fuerte y desglasar con jerez.",
+      "Añadir directamente a las lentejas en una olla.",
+      "Añadir caldo de pollo, zanahorias picadas, jengibre, peladura de limón, tres ajos dorados, tomates cherry y patata en daditos.",
+      "Sal.",
+      "45 min - 1 hora a fuego bajo.",
+      "Sacar las cabezas escurriéndolas.",
+      "Quitar el jengibre.",
+      "Tostar 3 cucharadas de curry y un poco de comino.",
+      "Hacer una pasta con jerez y limón.",
+      "Echarla a las lentejas.",
+      "Añadir también tomate frito, hierbabuena y mantequilla en dados.",
+      "Añadir los carabineros abiertos en mariposa y que se cocinen con el calor durante media hora de reposo."
+    ],
+    tips: ["-"],
+    fuente: "https://www.youtube.com/watch?v=XHhC-Ihf5YQ",
+    fecha: "05/02/2024"
   }
 ];
