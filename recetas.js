@@ -475,8 +475,7 @@ window.RECETAS = [
     imageUrl: "https://raw.githubusercontent.com/algpanda/domicilio-conyugal-images/refs/heads/main/cookies_aplastadas.png",
     ingredients: [
       "Chocolate",
-      "Mantequilla",
-      "Etc"
+      "Mantequilla"
     ],
     instructions: ["Pendiente"],
     tips: ["-"],
