@@ -1,5 +1,4 @@
 const ACCESS_CODE = "1210";
-const STORAGE_KEYS = { tasks: "casa-en-orden-tasks", shopping: "casa-en-orden-shopping" };
 const accessScreen = document.querySelector("#access-screen");
 const accessForm = document.querySelector("#access-form");
 const accessCode = document.querySelector("#access-code");
@@ -9,7 +8,6 @@ const app = document.querySelector("#app");
 function showApp() {
   accessScreen.hidden = true;
   app.hidden = false;
-  document.querySelector("#task-input").focus();
 }
 function lockApp() {
   app.hidden = true;
@@ -34,71 +32,6 @@ document.querySelector("#lock-button").addEventListener("click", () => {
   lockApp();
 });
 
-const readItems = (key) => {
-  try {
-    const value = JSON.parse(localStorage.getItem(key) || "[]");
-    return Array.isArray(value) ? value : [];
-  } catch { return []; }
-};
-let tasks = readItems(STORAGE_KEYS.tasks);
-let shopping = readItems(STORAGE_KEYS.shopping);
-function saveItems(key, items) { localStorage.setItem(key, JSON.stringify(items)); }
-function renderList(items, listElement, emptyElement, key, onToggle) {
-  listElement.replaceChildren();
-  emptyElement.hidden = items.length > 0;
-  items.forEach((item) => {
-    const row = document.createElement("li");
-    row.className = `list-item${item.done ? " is-done" : ""}`;
-    const toggle = document.createElement("button");
-    toggle.className = "item-toggle";
-    toggle.type = "button";
-    toggle.setAttribute("aria-label", item.done ? `Marcar ${item.text} como pendiente` : `Marcar ${item.text} como hecho`);
-    toggle.setAttribute("aria-pressed", String(item.done));
-    toggle.textContent = item.done ? "✓" : "";
-    toggle.addEventListener("click", () => onToggle(item.id));
-    const text = document.createElement("span");
-    text.className = "item-text";
-    text.textContent = item.text;
-    const remove = document.createElement("button");
-    remove.className = "remove-button";
-    remove.type = "button";
-    remove.setAttribute("aria-label", `Eliminar ${item.text}`);
-    remove.textContent = "×";
-    remove.addEventListener("click", () => {
-      const remaining = items.filter((entry) => entry.id !== item.id);
-      if (key === STORAGE_KEYS.tasks) tasks = remaining; else shopping = remaining;
-      saveItems(key, remaining);
-      renderAll();
-    });
-    row.append(toggle, text, remove);
-    listElement.append(row);
-  });
-}
-function renderAll() {
-  renderList(tasks, document.querySelector("#task-list"), document.querySelector("#empty-tasks"), STORAGE_KEYS.tasks, (id) => {
-    tasks = tasks.map((item) => item.id === id ? { ...item, done: !item.done } : item);
-    saveItems(STORAGE_KEYS.tasks, tasks); renderAll();
-  });
-  renderList(shopping, document.querySelector("#shopping-list"), document.querySelector("#empty-shopping"), STORAGE_KEYS.shopping, (id) => {
-    shopping = shopping.map((item) => item.id === id ? { ...item, done: !item.done } : item);
-    saveItems(STORAGE_KEYS.shopping, shopping); renderAll();
-  });
-  document.querySelector("#pending-count").textContent = tasks.filter((item) => !item.done).length;
-  document.querySelector("#shopping-count").textContent = shopping.filter((item) => !item.done).length;
-}
-function addItem(form, input, collection, key) {
-  form.addEventListener("submit", (event) => {
-    event.preventDefault();
-    const text = input.value.trim();
-    if (!text) return;
-    const updated = [...collection(), { id: crypto.randomUUID ? crypto.randomUUID() : `${Date.now()}-${Math.random()}`, text, done: false }];
-    if (key === STORAGE_KEYS.tasks) tasks = updated; else shopping = updated;
-    saveItems(key, updated); input.value = ""; input.focus(); renderAll();
-  });
-}
-addItem(document.querySelector("#task-form"), document.querySelector("#task-input"), () => tasks, STORAGE_KEYS.tasks);
-addItem(document.querySelector("#shopping-form"), document.querySelector("#shopping-input"), () => shopping, STORAGE_KEYS.shopping);
-
 const recipes = window.RECETAS || [];
 const RECIPES_PER_PAGE = 10;
 const RECIPE_TYPES = ["Ensalada", "Salado", "Guarnición", "Postre", "Merienda","Aperitivo","Pan"];
@@ -117,7 +50,6 @@ const DURATION_LABELS = new Map([
   [">1 hora", ">1 hora"],
   [">1 día", ">1 día"]
 ]);
-// Conserva las categorías que ya están en el catálogo, incluyendo registros con el nombre antiguo del campo.
 recipes.forEach((recipe) => {
   const storedDuration = window.RECIPE_DURATIONS?.[recipe.name] || recipe.duracion || recipe.tiempoMinutos;
   recipe.duracion = DURATION_LABELS.get(storedDuration) || storedDuration || "entre 30 - 60 minutos";
@@ -163,7 +95,7 @@ function setupRecipePicker() {
   section.innerHTML = `
     <div class="panel-heading recipe-heading"><div><p class="eyebrow">¿QUÉ COCINAMOS HOY?</p><h2 id="recipe-title">Encuentra tu receta</h2></div><span class="recipe-icon" aria-hidden="true">♨</span></div>
     <p class="recipe-intro">Busca por nombre o ingrediente y combina los filtros que quieras.</p>
-    <form id="recipe-form"><div class="recipe-search-row"><label class="recipe-field recipe-search-field" for="recipe-search">Nombre o ingrediente<input id="recipe-search" type="search" placeholder="Ej. tortilla, garbanzos…" autocomplete="off"></label><button id="open-recipe-filters" class="button recipe-filter-button" type="button" aria-haspopup="dialog">Filtros <span aria-hidden="true">⚙</span></button></div>
+    <form id="recipe-form"><div class="recipe-search-row"><label class="recipe-field recipe-search-field" for="recipe-search">Nombre o ingrediente<input id="recipe-search" type="search" placeholder="Ej. tortilla, garbanzos..." autocomplete="off"></label><button id="open-recipe-filters" class="button recipe-filter-button" type="button" aria-haspopup="dialog">Filtros <span aria-hidden="true">⚙</span></button></div>
       <fieldset class="recipe-mode-options"><legend>¿Cómo quieres ver los resultados?</legend><label class="recipe-mode-option"><input type="radio" name="recipe-mode" value="list" checked><span>Ver listado</span></label><label class="recipe-mode-option"><input type="radio" name="recipe-mode" value="random"><span>Elegir una al azar</span></label></fieldset>
       <div class="recipe-actions"><button class="button button-primary" type="submit">Buscar recetas <span aria-hidden="true">→</span></button><button id="clear-recipe-filters" class="recipe-clear" type="button">Quitar criterios</button></div><p id="recipe-message" class="recipe-message" aria-live="polite"></p>
     </form><div id="recipe-results" class="recipe-results" aria-live="polite"></div><nav id="recipe-pagination" class="recipe-pagination" aria-label="Páginas de resultados" hidden></nav>
@@ -266,8 +198,7 @@ function renderRecipe(recipe, container, onSelect) {
   const card = document.createElement("button"); card.className = "recipe-card"; card.type = "button"; card.setAttribute("aria-label", `Ver receta: ${recipe.name}`);
   const title = document.createElement("h3"); title.textContent = recipe.name;
   const description = document.createElement("p"); description.textContent = recipe.description || "";
-  const details = document.createElement("div"); details.className = "recipe-details";
-  details.textContent = `${(recipe.ingredients || []).length} ingredientes · ${typeLabel(recipe)}`;
+  const details = document.createElement("div"); details.className = "recipe-details"; details.textContent = `${(recipe.ingredients || []).length} ingredientes · ${typeLabel(recipe)}`;
   const tags = document.createElement("div"); tags.className = "recipe-card-tags";
   getRecipeTags(recipe).forEach((tag) => { const badge = document.createElement("span"); badge.className = "recipe-tag-badge"; badge.textContent = tag; tags.append(badge); });
   const prompt = document.createElement("span"); prompt.className = "recipe-card-prompt"; prompt.textContent = "Ver ingredientes y preparación →";
@@ -275,5 +206,4 @@ function renderRecipe(recipe, container, onSelect) {
 }
 setupRecipePicker();
 document.querySelector("#today").textContent = new Intl.DateTimeFormat("es", { weekday: "long", day: "numeric", month: "long" }).format(new Date());
-renderAll();
 if (sessionStorage.getItem("casa-en-orden-unlocked") === "true") showApp(); else accessCode.focus();
