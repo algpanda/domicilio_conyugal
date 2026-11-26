@@ -4,7 +4,7 @@
   styles.textContent = `
     .recipe-metadata-badges { display: flex; flex-wrap: wrap; gap: 6px; margin: 0 0 9px; }
     .recipe-metadata-badge { display: inline-flex; min-height: 26px; padding: 5px 9px; align-items: center; color: #536b55; border-radius: 999px; background: #edf1e8; font-size: 11px; line-height: 1.2; }
-    .recipe-card .recipe-metadata-badges { gap: 5px; margin-bottom: 7px; }
+    .recipe-card .recipe-metadata-badges { gap: 5px; margin: 0 0 7px; }
     .recipe-card .recipe-metadata-badge { min-height: 23px; padding: 4px 7px; font-size: 9px; }
     #recipe-dialog-content > .recipe-metadata-badges { margin: 8px 0 10px; }
   `;
@@ -37,14 +37,19 @@
 
   function addCardBadges() {
     document.querySelectorAll(".recipe-card").forEach((card) => {
-      if (card.querySelector(":scope > .recipe-card-copy > .recipe-metadata-badges, :scope > .recipe-metadata-badges")) return;
       const title = card.querySelector("h3");
+      const prompt = card.querySelector(".recipe-card-prompt");
       const name = title?.textContent;
       const recipe = (window.RECETAS || []).find((item) => item.name === name);
-      if (!title || !recipe) return;
-      const badges = recipeBadges(recipe);
+      if (!title || !prompt || !recipe) return;
+
+      // Los tags ya están incluidos en el conjunto de metadatos: quita la fila antigua para evitar duplicados.
+      card.querySelectorAll(".recipe-card-tags").forEach((tags) => tags.remove());
+      const badgeContainers = [...card.querySelectorAll(".recipe-metadata-badges")];
+      const badges = badgeContainers.shift() || recipeBadges(recipe);
+      badgeContainers.forEach((duplicate) => duplicate.remove());
       badges.classList.add("recipe-card-metadata");
-      title.before(badges);
+      prompt.parentNode.insertBefore(badges, prompt);
     });
   }
 
