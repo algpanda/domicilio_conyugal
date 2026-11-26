@@ -134,7 +134,7 @@
     if (!recipe) return;
 
     const tagline = dialog.querySelector(".recipe-dialog-header .eyebrow");
-    if (tagline) tagline.textContent = "Chulapa y Chuleta";
+    if (tagline) tagline.textContent = "Chulapa & Chuleta";
     const description = content.querySelector(".recipe-dialog-description");
     const ingredientsHeading = [...content.querySelectorAll("h3")].find((heading) => heading.textContent === "Ingredientes");
     const ingredients = content.querySelector(".recipe-ingredient-list");
