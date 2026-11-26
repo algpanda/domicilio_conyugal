@@ -95,20 +95,20 @@ function setupRecipePicker() {
   section.innerHTML = `
     <div class="panel-heading recipe-heading"><div><p class="eyebrow">¿QUÉ COCINAMOS HOY?</p><h2 id="recipe-title">Encuentra tu receta</h2></div><span class="recipe-icon" aria-hidden="true">♨</span></div>
     <p class="recipe-intro">Busca por nombre o ingrediente y combina los filtros que quieras.</p>
-    <form id="recipe-form"><div class="recipe-search-row"><label class="recipe-field recipe-search-field" for="recipe-search">Nombre o ingrediente<input id="recipe-search" type="search" placeholder="Ej. tortilla, garbanzos..." autocomplete="off"></label><button id="open-recipe-filters" class="button recipe-filter-button" type="button" aria-haspopup="dialog">Filtros <span aria-hidden="true">⚙</span></button></div>
-      <fieldset class="recipe-mode-options"><legend>¿Cómo quieres ver los resultados?</legend><label class="recipe-mode-option"><input type="radio" name="recipe-mode" value="list" checked><span>Ver listado</span></label><label class="recipe-mode-option"><input type="radio" name="recipe-mode" value="random"><span>Elegir una al azar</span></label></fieldset>
-      <div class="recipe-actions"><button class="button button-primary" type="submit">Buscar recetas <span aria-hidden="true">→</span></button><button id="clear-recipe-filters" class="recipe-clear" type="button">Quitar criterios</button></div><p id="recipe-message" class="recipe-message" aria-live="polite"></p>
-    </form><div id="recipe-results" class="recipe-results" aria-live="polite"></div><nav id="recipe-pagination" class="recipe-pagination" aria-label="Páginas de resultados" hidden></nav>
-    <dialog id="recipe-filter-dialog" class="recipe-dialog recipe-filter-dialog" aria-labelledby="recipe-filter-title"><div class="recipe-dialog-header"><p class="eyebrow">AFINA LA BÚSQUEDA</p><button class="recipe-dialog-close filter-dialog-close" type="button" aria-label="Cerrar filtros">×</button></div><h2 id="recipe-filter-title">Filtros de recetas</h2>
+    <form id="recipe-form"><div class="recipe-search-row"><label class="recipe-field recipe-search-field" for="recipe-search">Nombre o ingrediente<input id="recipe-search" type="search" placeholder="Ej. calabaza, curry…"></label><button class="button recipe-filter-button" id="open-recipe-filters" type="button">Filtros</button></div>
+      <fieldset class="recipe-mode-options"><legend>¿Cómo quieres ver los resultados?</legend><label class="recipe-mode-option"><input type="radio" name="recipe-mode" value="list" checked><span>Lista</span></label><label class="recipe-mode-option"><input type="radio" name="recipe-mode" value="random"><span>Al azar</span></label></fieldset>
+      <div class="recipe-actions"><button class="button button-primary" type="submit">Buscar recetas <span aria-hidden="true">→</span></button><button id="clear-recipe-filters" class="recipe-clear" type="button">Limpiar búsqueda</button></div>
+    </form><p id="recipe-message" class="recipe-message" aria-live="polite"></p><div id="recipe-results" class="recipe-results" aria-live="polite"></div><nav id="recipe-pagination" class="recipe-pagination" aria-label="Páginas de resultados" hidden></nav>
+    <dialog id="recipe-filter-dialog" class="recipe-dialog recipe-filter-dialog" aria-labelledby="recipe-filter-title"><div class="recipe-dialog-header"><p class="eyebrow">AFINA LA BÚSQUEDA</p><button class="recipe-dialog-close filter-dialog-close" type="button" aria-label="Cerrar filtros">×</button></div><h2 id="recipe-filter-title">Filtros</h2>
       <form id="recipe-filter-form"><label class="recipe-field" for="recipe-type">Tipo de receta<select id="recipe-type" name="recipe-type"><option value="">Todos los tipos</option></select></label>
         <div class="recipe-filter-group"><p class="recipe-filter-label">Materia prima <small>Puedes escoger varias.</small></p><div id="recipe-ingredient-filters"></div></div>
         <label class="recipe-field" for="recipe-time">Tiempo de cocinado<select id="recipe-time" name="recipe-time"><option value="">Cualquier duración</option></select></label>
         <div class="recipe-filter-group"><p class="recipe-filter-label">Región <small>Puedes escoger varias.</small></p><div id="recipe-region-filters"></div></div>
-        <fieldset class="recipe-options"><legend>Etiquetas <small>Al seleccionar varias, basta con que coincida una.</small></legend><div id="recipe-tag-options" class="recipe-tag-options"></div><p id="recipe-no-tags" class="recipe-no-tags" hidden>No hay etiquetas disponibles en el catálogo.</p></fieldset>
+        <fieldset class="recipe-options"><legend>Etiquetas <small>Al seleccionar varias, basta con que coincida una.</small></legend><div id="recipe-tag-options" class="recipe-tag-options"></div><p id="recipe-no-tags" class="recipe-no-tags">No hay etiquetas disponibles.</p></fieldset>
         <div class="recipe-actions"><button class="button button-primary" type="submit">Aplicar filtros</button><button id="reset-recipe-filters" class="recipe-clear" type="button">Limpiar filtros</button></div>
       </form>
     </dialog>
-    <dialog id="recipe-details-dialog" class="recipe-dialog" aria-labelledby="recipe-dialog-title"><div class="recipe-dialog-header"><p class="eyebrow">PARA PONERSE EL DELANTAL</p><button class="recipe-dialog-close details-dialog-close" type="button" aria-label="Cerrar detalles">×</button></div><div id="recipe-dialog-content"></div></dialog>`;
+    <dialog id="recipe-details-dialog" class="recipe-dialog" aria-labelledby="recipe-dialog-title"><div class="recipe-dialog-header"><p class="eyebrow">PARA PONERSE EL DELANTAL</p><button class="recipe-dialog-close details-dialog-close" type="button" aria-label="Cerrar receta">×</button></div><div id="recipe-dialog-content"></div></dialog>`;
   const dashboard = document.querySelector("#inicio");
   dashboard.insertBefore(section, dashboard.querySelector(".content-grid"));
   const form = section.querySelector("#recipe-form");
@@ -141,7 +141,7 @@ function setupRecipePicker() {
   filterForm.addEventListener("submit", (event) => { event.preventDefault(); filterDialog.close(); runSearch(); });
   section.querySelector("#reset-recipe-filters").addEventListener("click", () => filterForm.reset());
   form.addEventListener("submit", (event) => { event.preventDefault(); runSearch(); });
-  section.querySelector("#clear-recipe-filters").addEventListener("click", () => { form.reset(); filterForm.reset(); results.replaceChildren(); pagination.replaceChildren(); pagination.hidden = true; message.textContent = ""; matchingRecipes = []; currentPage = 1; });
+  section.querySelector("#clear-recipe-filters").addEventListener("click", () => { form.reset(); filterForm.reset(); results.replaceChildren(); pagination.replaceChildren(); pagination.hidden = true; message.textContent = ""; });
 
   function runSearch() {
     const query = normalizeText(section.querySelector("#recipe-search").value);
@@ -189,13 +189,18 @@ function setupRecipePicker() {
     const ingredientList = document.createElement("ul"); ingredientList.className = "recipe-ingredient-list";
     (Array.isArray(recipe.ingredients) ? recipe.ingredients : []).forEach((ingredient) => { const item = document.createElement("li"); item.textContent = ingredient; ingredientList.append(item); });
     const instructionsHeading = document.createElement("h3"); instructionsHeading.textContent = "Preparación";
-    const instructions = document.createElement("p"); instructions.className = "recipe-instructions"; instructions.textContent = Array.isArray(recipe.instructions) ? recipe.instructions.join(" ") : recipe.instructions || "Consulta la receta para conocer la preparación.";
+    const instructions = document.createElement("p"); instructions.className = "recipe-instructions"; instructions.textContent = Array.isArray(recipe.instructions) ? recipe.instructions.join(" ") : "";
     dialogContent.append(title, description, facts, ingredientsHeading, ingredientList, instructionsHeading, instructions);
     detailsDialog.showModal(); section.querySelector(".details-dialog-close").focus();
   }
 }
 function renderRecipe(recipe, container, onSelect) {
   const card = document.createElement("button"); card.className = "recipe-card"; card.type = "button"; card.setAttribute("aria-label", `Ver receta: ${recipe.name}`);
+  if (recipe.novedad === "Sí") {
+    card.classList.add("recipe-card-new");
+  } else if (Array.isArray(recipe.instructions) && recipe.instructions.includes("Pendiente")) {
+    card.classList.add("recipe-card-pending");
+  }
   const title = document.createElement("h3"); title.textContent = recipe.name;
   const description = document.createElement("p"); description.textContent = recipe.description || "";
   const details = document.createElement("div"); details.className = "recipe-details"; details.textContent = `${(recipe.ingredients || []).length} ingredientes · ${typeLabel(recipe)}`;
