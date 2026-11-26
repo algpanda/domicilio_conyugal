@@ -1,4 +1,4 @@
-#relanzar
+#relanza
 # Casa en orden
 
 Pequeña aplicación en español para organizar tareas del hogar y la lista de la compra. Se puede abrir directamente en el navegador: no requiere instalación ni compilación.
