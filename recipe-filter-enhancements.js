@@ -39,15 +39,90 @@
     });
   });
 
-  // Los criterios dentro de un mismo grupo siguen siendo OR, y la búsqueda existente
-  // combina cada grupo con AND. Reutiliza el submit normal para aplicar los filtros.
+  // Guarda una instantánea de los filtros aplicados, sin buscar todavía.
+  function readFilters() {
+    const values = new Map();
+    new FormData(filterForm).forEach((value, name) => {
+      if (!values.has(name)) values.set(name, []);
+      values.get(name).push(value);
+    });
+    return values;
+  }
+
+  function restoreFilters(values) {
+    [...filterForm.elements].forEach((control) => {
+      if (!control.name) return;
+      const selected = values.get(control.name) || [];
+      if (control.type === "checkbox" || control.type === "radio") {
+        control.checked = selected.includes(control.value);
+      } else {
+        control.value = selected[0] || "";
+      }
+    });
+    multiSelects.forEach(updateSummary);
+  }
+
+  let appliedFilters = readFilters();
   filterForm.addEventListener("submit", (event) => {
     event.preventDefault();
     event.stopImmediatePropagation();
-    recipeForm.requestSubmit();
+    appliedFilters = readFilters();
+    filterDialog.close();
+    recipeForm.querySelector("#recipe-results")?.replaceChildren();
+    const pagination = recipeForm.querySelector("#recipe-pagination");
+    if (pagination) {
+      pagination.replaceChildren();
+      pagination.hidden = true;
+    }
+    const message = recipeForm.querySelector("#recipe-message");
+    if (message) message.textContent = "";
   }, true);
 
-  // En esta ventana solo la X la cierra; aplicar filtros, Escape o el backdrop no.
+  // Cambiar filtros sin aplicarlos no debe alterar la búsqueda. Solo los botones de modo buscan.
+  const modeFieldset = recipeForm.querySelector(".recipe-mode-options");
+  const listMode = modeFieldset?.querySelector('input[value="list"]');
+  const randomMode = modeFieldset?.querySelector('input[value="random"]');
+  if (modeFieldset && listMode && randomMode) {
+    modeFieldset.hidden = true;
+    const actions = recipeForm.querySelector(".recipe-actions");
+    actions?.querySelector('button[type="submit"]')?.remove();
+
+    let searchAllowed = false;
+    recipeForm.addEventListener("submit", (event) => {
+      if (searchAllowed) {
+        searchAllowed = false;
+        restoreFilters(appliedFilters);
+        return;
+      }
+      event.preventDefault();
+      event.stopImmediatePropagation();
+    }, true);
+
+    [
+      { label: "Ver listado", mode: listMode },
+      { label: "Elegir una al azar", mode: randomMode }
+    ].forEach(({ label, mode }) => {
+      const button = document.createElement("button");
+      button.className = "button button-primary";
+      button.type = "button";
+      button.textContent = label;
+      button.addEventListener("click", () => {
+        restoreFilters(appliedFilters);
+        mode.checked = true;
+        searchAllowed = true;
+        recipeForm.requestSubmit();
+      });
+      actions?.prepend(button);
+    });
+  }
+
+  // Reiniciar criterios también reinicia la instantánea que se usará en la próxima búsqueda.
+  recipeForm.querySelector("#clear-recipe-filters")?.addEventListener("click", () => {
+    filterForm.reset();
+    appliedFilters = readFilters();
+  }, true);
+
+  // En esta ventana solo la X o «Aplicar filtros» la cierran; Escape o el backdrop no.
   filterDialog.addEventListener("cancel", (event) => event.preventDefault());
   filterDialog.addEventListener("click", (event) => {
     if (event.target === filterDialog) {
