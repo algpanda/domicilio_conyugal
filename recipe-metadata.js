@@ -39,17 +39,20 @@
     document.querySelectorAll(".recipe-card").forEach((card) => {
       const title = card.querySelector("h3");
       const prompt = card.querySelector(".recipe-card-prompt");
-      const name = title?.textContent;
-      const recipe = (window.RECETAS || []).find((item) => item.name === name);
+      const recipe = (window.RECETAS || []).find((item) => item.name === title?.textContent);
       if (!title || !prompt || !recipe) return;
 
-      // Los tags ya están incluidos en el conjunto de metadatos: quita la fila antigua para evitar duplicados.
+      // Las etiquetas ya están en el conjunto de metadatos; quita la fila antigua para evitar duplicados.
       card.querySelectorAll(".recipe-card-tags").forEach((tags) => tags.remove());
       const badgeContainers = [...card.querySelectorAll(".recipe-metadata-badges")];
       const badges = badgeContainers.shift() || recipeBadges(recipe);
       badgeContainers.forEach((duplicate) => duplicate.remove());
       badges.classList.add("recipe-card-metadata");
-      prompt.parentNode.insertBefore(badges, prompt);
+
+      // No mover el nodo si ya está en su sitio: el MutationObserver observa el DOM completo.
+      if (badges.parentNode !== prompt.parentNode || badges.nextElementSibling !== prompt) {
+        prompt.parentNode.insertBefore(badges, prompt);
+      }
     });
   }
 
