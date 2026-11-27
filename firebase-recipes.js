@@ -19,6 +19,7 @@ async function start() {
 
   const firebaseApp = initializeApp(firebaseConfig);
   const database = getFirestore(firebaseApp);
+  window.FIREBASE_DB = database;
   const snapshot = await getDocs(collection(database, "recetas"));
   window.RECETAS = snapshot.docs.map((document) => ({ id: document.id, ...document.data() }));
 
@@ -29,6 +30,7 @@ async function start() {
   await import("./recipe-modal.js");
   await import("./recipe-card-cleanup.js");
   await import("./recipe-metadata.js");
+  await import("./recipe-admin.js");
 }
 
 start().catch((error) => {
