@@ -19,10 +19,9 @@ async function start() {
 
   const firebaseApp = initializeApp(firebaseConfig);
   const database = getFirestore(firebaseApp);
-  const snapshot = await getDocs(collection(database, "recipes"));
+  const snapshot = await getDocs(collection(database, "recetas"));
   window.RECETAS = snapshot.docs.map((document) => ({ id: document.id, ...document.data() }));
 
-  // Se conserva la tabla de duraciones vigente y se carga antes de iniciar la aplicación.
   await import("./receta-duraciones.js");
   await import("./app.js");
   await import("./recipe-filter-enhancements.js");
